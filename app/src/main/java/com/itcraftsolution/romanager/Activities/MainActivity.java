@@ -1,8 +1,10 @@
-package com.itcraftsolution.romanager;
+package com.itcraftsolution.romanager.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.itcraftsolution.romanager.R;
 
 public class MainActivity extends AppCompatActivity {
 
