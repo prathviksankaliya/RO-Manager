@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#5B4DC3</color>
+    <color name="whiteBg">#EFEEFC</color>
+    <color name="fontBlue">#6A5AE0</color>
+    <color name="hintWhiteDark">#8C8C8C</color>
+    <color name="statusBarDarkBlue">#4F43A8</color>
+
+
+
+
+    <!--    #5B4DC3 - btn blue-->
+    <!--    #EFEEFC - light white bg-->
+    <!--    #6A5AE0 - font color-->
+
+    <!--    #8C8C8C - light white hint font-->
+    <!--    #4F43A8-->
+</resources>
