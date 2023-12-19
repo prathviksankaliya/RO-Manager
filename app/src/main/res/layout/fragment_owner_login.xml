@@ -1,14 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/white_bg"
+    android:padding="@dimen/_4mdp"
     tools:context=".Fragments.OwnerLoginFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Owner Fragment" />
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Phone Number"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/_5mdp"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4mdp"
+        android:hint="Phone Number"
+        app:hintTextColor="@color/blue"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomEnd="@dimen/_8mdp"
+        app:boxCornerRadiusBottomStart="@dimen/_8mdp"
+        app:boxCornerRadiusTopEnd="@dimen/_8mdp"
+        app:boxCornerRadiusTopStart="@dimen/_8mdp"
+        app:boxStrokeWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:startIconDrawable="@drawable/baseline_call_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edOwnerPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_semibold"
+            android:textColor="@color/blue"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnGetOtp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_14mdp"
+        android:background="@drawable/blue_bg"
+        android:text="GET OTP"
+        android:textColor="@color/white"
+        android:fontFamily="@font/nunito_bold"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8mdp"
+        android:layout_marginTop="@dimen/_12mdp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/btnGetOtp"
+        tools:layout_editor_absoluteX="16dp">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/blue" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center"
+            android:text="OR"
+            android:textColor="@color/blue" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/blue" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnSignInWithGoogle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12mdp"
+        android:background="@drawable/dark_white_bg"
+        android:padding="@dimen/_8mdp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/google"
+            android:paddingStart="@dimen/_4mdp"
+            android:layout_weight="2"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Sign In With Google"
+            android:layout_weight="2"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_16font_mdp"
+            />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
