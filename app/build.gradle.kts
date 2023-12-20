@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -48,7 +49,6 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.6.1")
 
     //MVVM
-
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.6.2")
     // LiveData
@@ -58,5 +58,9 @@ dependencies {
     implementation("com.github.MrNouri:DynamicSizes:1.0")
 
     //OTP View
-    implementation ("com.github.mukeshsolanki.android-otpview-pinview:otpview:3.1.0")
+    implementation("com.github.aabhasr1:OtpView:v1.1.2")
+
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-auth:22.3.0")
 }

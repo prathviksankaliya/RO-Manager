@@ -19,7 +19,6 @@ import com.itcraftsolution.romanager.databinding.FragmentOwnerLoginBinding;
 public class OwnerLoginFragment extends Fragment {
 
     private FragmentOwnerLoginBinding binding;
-    private SpfOwnerDetails spfOwnerDetails;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,9 +33,10 @@ public class OwnerLoginFragment extends Fragment {
                     binding.edOwnerPhoneNumber.setError("Phone Number Must have 10 Digit!!");
                     binding.edOwnerPhoneNumber.requestFocus();
                 }else{
-                    spfOwnerDetails = new SpfOwnerDetails(requireContext());
-                    spfOwnerDetails.setOwnerPreference(binding.edOwnerPhoneNumber.getText().toString());
-                    startActivity(new Intent(requireContext(), VerifyOtpActivity.class));
+                    Intent intent = new Intent(requireContext(), VerifyOtpActivity.class);
+                    intent.putExtra("phone", binding.edOwnerPhoneNumber.getText().toString());
+                    intent.putExtra("isOwner", true);
+                    startActivity(intent);
                 }
             }
         });

@@ -120,6 +120,7 @@
             android:layout_height="match_parent"
             android:text="Sign In With Google"
             android:layout_weight="2"
+            android:gravity="start"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/blue"
             android:textSize="@dimen/_16font_mdp"

@@ -17,9 +17,12 @@ public class SpfEmployeeDetails {
         editor = spf.edit();
     }
 
-    public SharedPreferences setEmployeePreference(String phone){
+    public void setEmployeePreference(String phone){
         editor.putString("EmployeePhone", phone);
         editor.apply();
+    }
+
+    public SharedPreferences getEmployeePreference(){
         return spf;
     }
 }

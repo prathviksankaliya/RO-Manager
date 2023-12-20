@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.itcraftsolution.romanager" />
+                  <option name="mobileSdkAppId" value="1:1052096358810:android:e8abe0bcddce5493c5f223" />
+                  <option name="projectId" value="ro-manager" />
+                  <option name="projectNumber" value="1052096358810" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

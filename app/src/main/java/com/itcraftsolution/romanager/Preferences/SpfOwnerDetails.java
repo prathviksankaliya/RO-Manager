@@ -17,4 +17,8 @@ public class SpfOwnerDetails {
         editor.apply();
         return spf;
     }
+
+    public SharedPreferences getOwnerPreference(){
+        return spf;
+    }
 }
