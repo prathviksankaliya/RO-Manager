@@ -64,6 +64,8 @@ public class ProfileActivity extends AppCompatActivity {
                     String plantCityName = binding.edProfileCityName.getText().toString().trim();
                     String plantAddress = binding.edProfilePlantAddress.getText().toString().trim();
                     Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+
+
                     intent.putExtra("imageUri", selectedImageUri);
                     intent.putExtra("plantName", plantName);
                     intent.putExtra("plantCity", plantCityName);
