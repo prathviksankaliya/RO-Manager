@@ -23,7 +23,6 @@
         android:layout_height="@dimen/_120mdp"
         android:layout_marginTop="@dimen/_8mdp"
         android:src="@drawable/boy"
-        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

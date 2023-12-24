@@ -1,16 +1,24 @@
 package com.itcraftsolution.romanager.Retrofit;
 
+import android.view.PixelCopy;
+
 import com.itcraftsolution.romanager.Models.ResponseModel;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface ApiInterface {
 
+    @Multipart
     @POST("insert_plant_details.php")
-    Call<ResponseModel> insertPlantDetails(@Field("auth_id") String auth_id, @Field("plant_name") String plant_name,
-                                           @Field("plant_phone") String plant_phone, @Field("plant_email") String plant_email,
-                                           @Field("plant_image") String plant_image, @Field("plant_city") String plant_city,
-                                           @Field("plant_address") String plant_address, @Field("plant_security") String plant_security);
+    Call<ResponseModel> insertPlantDetails(@Part("auth_id") RequestBody auth_id, @Part("plant_name") RequestBody plant_name,
+                                           @Part("plant_phone") RequestBody plant_phone, @Part("plant_email") RequestBody plant_email,
+                                           @Part MultipartBody.Part plant_image, @Part("plant_city") RequestBody plant_city,
+                                           @Part("plant_address") RequestBody plant_address, @Part("plant_security") RequestBody plant_security);
 }

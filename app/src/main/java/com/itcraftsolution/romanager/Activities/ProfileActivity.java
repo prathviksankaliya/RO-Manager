@@ -1,29 +1,27 @@
 package com.itcraftsolution.romanager.Activities;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.bumptech.glide.Glide;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.itcraftsolution.romanager.Models.PlantDetailsModel;
+import com.itcraftsolution.romanager.Utils.FileUtils;
+import com.itcraftsolution.romanager.ViewModels.RoManagerViewModel;
 import com.itcraftsolution.romanager.databinding.ActivityProfileBinding;
-
-import java.io.File;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -32,6 +30,8 @@ public class ProfileActivity extends AppCompatActivity {
     private Uri selectedImageUri;
     private FirebaseAuth auth;
     private FirebaseUser user;
+    private RoManagerViewModel roManagerViewModel;
+    private String authID, imgPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +40,18 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        roManagerViewModel = ViewModelProviders.of(this).get(RoManagerViewModel.class);
 
-        loadData();
+        if(getIntent().getStringExtra("phoneNumber") != null){
+            binding.edProfilePhone.setText(getIntent().getStringExtra("phoneNumber"));
+            binding.edProfilePhone.setEnabled(false);
+        }else if(getIntent().getBooleanExtra("GoogleAuth", false)){
+            if(user != null){
+                authID = user.getUid();
+                Glide.with(ProfileActivity.this).load(user.getPhotoUrl()).into(binding.circleImageView);
+            }
+        }
         binding.btnSaveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,15 +73,21 @@ public class ProfileActivity extends AppCompatActivity {
                     String plantName = binding.edProfilePlantName.getText().toString().trim();
                     String plantCityName = binding.edProfileCityName.getText().toString().trim();
                     String plantAddress = binding.edProfilePlantAddress.getText().toString().trim();
-                    Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+                    String plantPhone = binding.edProfilePhone.getText().toString().trim();
 
-
-                    intent.putExtra("imageUri", selectedImageUri);
-                    intent.putExtra("plantName", plantName);
-                    intent.putExtra("plantCity", plantCityName);
-                    intent.putExtra("plantAddress", plantAddress);
-                    startActivity(intent);
-                    finish();
+                    PlantDetailsModel model = new PlantDetailsModel(0, auth.getCurrentUser().getUid(), plantName, plantPhone, "", imgPath, plantCityName, plantAddress, "", 1);
+                    roManagerViewModel.insertPlantDetails(model).observe(ProfileActivity.this, new Observer<Boolean>() {
+                        @Override
+                        public void onChanged(Boolean aBoolean) {
+                            if(aBoolean){
+                                Toast.makeText(ProfileActivity.this, "Plant Details insert Successfully...", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+                                finish();
+                            }else{
+                                Toast.makeText(ProfileActivity.this, "PA Something went Wrong!!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
             }
         });
@@ -79,9 +95,7 @@ public class ProfileActivity extends AppCompatActivity {
         binding.igEditProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
-                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 launcher.launch(intent);
             }
         });
@@ -91,11 +105,8 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent data = result.getData();
                 if(data != null && data.getData() != null){
                     selectedImageUri = data.getData();
-                    final String path = getPathFromUri(selectedImageUri);
-                    if(path != null){
-                        File f = new File(path);
-                        selectedImageUri = Uri.fromFile(f);
-                    }
+                    imgPath = FileUtils.getPathFromContentUri(ProfileActivity.this, selectedImageUri);
+                    Log.d("ResponceModelData", imgPath);
                     Glide.with(ProfileActivity.this).load(selectedImageUri).into(binding.circleImageView);
                 }
             }else{
@@ -103,27 +114,5 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-    }
-    private void loadData(){
-        if(getIntent().getStringExtra("phoneNumber") != null){
-            binding.edProfilePhone.setText(getIntent().getStringExtra("phoneNumber"));
-            binding.edProfilePhone.setEnabled(false);
-        }else if(getIntent().getBooleanExtra("GoogleAuth", false)){
-            user = auth.getCurrentUser();
-            if(user != null){
-                Glide.with(ProfileActivity.this).load(user.getPhotoUrl()).into(binding.circleImageView);
-            }
-        }
-    }
-    private String getPathFromUri(Uri contentUri){
-        String res = null;
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-        if(cursor.moveToFirst()){
-            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            res = cursor.getString(columnIndex);
-        }
-        cursor.close();
-        return res;
     }
 }

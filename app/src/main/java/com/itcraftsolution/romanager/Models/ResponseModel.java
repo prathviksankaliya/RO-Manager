@@ -1,7 +1,15 @@
 package com.itcraftsolution.romanager.Models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ResponseModel {
-    private String status, message;
+    @SerializedName("status")
+    private String status;
+    @SerializedName("message")
+    private String message;
+
+    public ResponseModel() {
+    }
 
     public ResponseModel(String status, String message) {
         this.status = status;

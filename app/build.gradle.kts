@@ -53,6 +53,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.6.2")
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata:2.6.2")
+    implementation ("android.arch.lifecycle:extensions:1.1.1")
 
     //Dynamic Sizes
     implementation("com.github.MrNouri:DynamicSizes:1.0")
