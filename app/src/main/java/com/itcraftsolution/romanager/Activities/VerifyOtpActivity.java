@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +24,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.itcraftsolution.romanager.Preferences.SpfEmployeeDetails;
 import com.itcraftsolution.romanager.Preferences.SpfOwnerDetails;
 import com.itcraftsolution.romanager.R;
+import com.itcraftsolution.romanager.Utils.NetworkChangeListener;
 import com.itcraftsolution.romanager.databinding.ActivityVerifyOtpBinding;
 
 import java.util.concurrent.TimeUnit;
@@ -31,6 +34,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
     private ActivityVerifyOtpBinding binding;
     private String phoneNumber, verifyId;
     private FirebaseAuth auth;
+    private final NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,5 +118,17 @@ public class VerifyOtpActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

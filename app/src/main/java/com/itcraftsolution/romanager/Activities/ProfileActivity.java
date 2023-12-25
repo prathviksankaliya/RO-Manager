@@ -2,6 +2,8 @@ package com.itcraftsolution.romanager.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -20,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.itcraftsolution.romanager.Models.PlantDetailsModel;
 import com.itcraftsolution.romanager.Utils.FileUtils;
+import com.itcraftsolution.romanager.Utils.NetworkChangeListener;
 import com.itcraftsolution.romanager.ViewModels.RoManagerViewModel;
 import com.itcraftsolution.romanager.databinding.ActivityProfileBinding;
 
@@ -32,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseUser user;
     private RoManagerViewModel roManagerViewModel;
     private String authID, imgPath;
+    private final NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,8 @@ public class ProfileActivity extends AppCompatActivity {
         }else if(getIntent().getBooleanExtra("GoogleAuth", false)){
             if(user != null){
                 authID = user.getUid();
+                selectedImageUri = user.getPhotoUrl();
+                imgPath = FileUtils.getPathFromContentUri(ProfileActivity.this, selectedImageUri);
                 Glide.with(ProfileActivity.this).load(user.getPhotoUrl()).into(binding.circleImageView);
             }
         }
@@ -67,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
                 }else if(binding.edProfilePlantAddress.getText().toString().isEmpty() || binding.edProfilePlantAddress.getText().length() <= 7){
                     binding.edProfilePlantAddress.setError("Please Enter Valid Address Name!!");
                     binding.edProfilePlantAddress.requestFocus();
-                }else if(selectedImageUri == null){
+                }else if(selectedImageUri == null && imgPath == null){
                     Toast.makeText(ProfileActivity.this, "Please select Plant Image!!", Toast.LENGTH_LONG).show();
                 }else{
                     String plantName = binding.edProfilePlantName.getText().toString().trim();
@@ -106,7 +112,6 @@ public class ProfileActivity extends AppCompatActivity {
                 if(data != null && data.getData() != null){
                     selectedImageUri = data.getData();
                     imgPath = FileUtils.getPathFromContentUri(ProfileActivity.this, selectedImageUri);
-                    Log.d("ResponceModelData", imgPath);
                     Glide.with(ProfileActivity.this).load(selectedImageUri).into(binding.circleImageView);
                 }
             }else{
@@ -115,4 +120,17 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 }
+

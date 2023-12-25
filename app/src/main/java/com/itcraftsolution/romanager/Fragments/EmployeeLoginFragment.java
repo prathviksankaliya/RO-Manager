@@ -35,6 +35,7 @@ public class EmployeeLoginFragment extends Fragment {
                     intent.putExtra("phone", binding.edEmployeePhoneNumber.getText().toString());
                     intent.putExtra("isOwner", false);
                     startActivity(intent);
+                    requireActivity().finish();
                 }
             }
         });

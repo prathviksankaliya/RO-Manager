@@ -97,6 +97,7 @@ public class OwnerLoginFragment extends Fragment {
                                             startActivity(new Intent(requireContext(), ProfileActivity.class)
                                                     .putExtra("GoogleAuth", true));
                                             Toast.makeText(requireContext(), "Auth SuccessFul!!", Toast.LENGTH_SHORT).show();
+                                            requireActivity().finish();
                                         }else{
                                             Toast.makeText(requireContext(), "Auth Failed!!", Toast.LENGTH_SHORT).show();
 
