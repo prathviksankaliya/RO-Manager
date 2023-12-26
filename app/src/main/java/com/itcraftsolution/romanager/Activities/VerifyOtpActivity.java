@@ -106,6 +106,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     startActivity(new Intent(VerifyOtpActivity.this, ProfileActivity.class).putExtra("phoneNumber", getIntent().getStringExtra("phone")));
+                    finish();
                 }else {
                     Toast.makeText(VerifyOtpActivity.this, "Please Try Again!!", Toast.LENGTH_SHORT).show();
                 }

@@ -6,4 +6,9 @@
         <item name="android:statusBarColor">@color/statusBarDarkBlue</item>
     </style>
     <style name="Theme.ROManager" parent="Base.Theme.ROManager" />
+
+    <style name="roundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_12mdp</item>
+    </style>
 </resources>

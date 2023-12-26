@@ -4,29 +4,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/whiteBg"
     tools:context=".Activities.HomeActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/igDemo"
-        android:layout_width="@dimen/_150mdp"
-        android:layout_height="150dp"
-        android:src="@drawable/boy"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?appBarLayoutStyle"
+        android:background="@color/fontBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txPlantName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_bold"
+                android:maxLength="22"
+                android:maxLines="1"
+                android:text="Ashapura Water limbdiiiiiiii Waterrrrrrrrrrrrrrrr"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20font_mdp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/igPlantImage"
+                android:layout_width="@dimen/_42mdp"
+                android:layout_height="@dimen/_42mdp"
+                app:shapeAppearanceOverlay="@style/roundedImageView"
+                android:scaleType="fitXY"
+                android:layout_marginEnd="@dimen/_6mdp"
+                android:gravity="end"
+                android:src="@drawable/me" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
-        android:id="@+id/txDemo"
-        android:layout_width="match_parent"
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="lnf"
-        android:textSize="@dimen/_22font_mdp"
-        android:textStyle="bold"
+        android:layout_marginHorizontal="@dimen/_5mdp"
+        android:layout_marginTop="@dimen/_3mdp"
         android:fontFamily="@font/nunito_bold"
+        android:text="Customers"
+        android:textSize="@dimen/_16font_mdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/crFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginEnd="@dimen/_5mdp"
+        app:cardCornerRadius="@dimen/_6mdp"
+        app:cardElevation="@dimen/_6mdp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="@+id/textView7">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5mdp"
+            android:background="@drawable/dark_white_bg"
+            android:drawableStart="@drawable/filter_list_24px"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12font_mdp"
+            android:drawablePadding="@dimen/_2mdp"
+            android:paddingHorizontal="@dimen/_6mdp"
+            android:paddingVertical="@dimen/_2mdp"
+            android:text="Filter" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCustomerList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_3mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/igDemo" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

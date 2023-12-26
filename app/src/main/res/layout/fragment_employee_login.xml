@@ -54,7 +54,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_14mdp"
         android:background="@drawable/blue_bg"
-        android:backgroundTint="@color/blue"
         android:text="GET OTP"
         android:textColor="@color/white"
         android:fontFamily="@font/nunito_bold"

@@ -53,9 +53,6 @@ public class ProfileActivity extends AppCompatActivity {
         }else if(getIntent().getBooleanExtra("GoogleAuth", false)){
             if(user != null){
                 authID = user.getUid();
-                selectedImageUri = user.getPhotoUrl();
-                imgPath = FileUtils.getPathFromContentUri(ProfileActivity.this, selectedImageUri);
-                Glide.with(ProfileActivity.this).load(user.getPhotoUrl()).into(binding.circleImageView);
             }
         }
         binding.btnSaveProfile.setOnClickListener(new View.OnClickListener() {
