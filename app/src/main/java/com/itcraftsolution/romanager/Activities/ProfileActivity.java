@@ -7,7 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -84,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
                         public void onChanged(Boolean aBoolean) {
                             if(aBoolean){
                                 Toast.makeText(ProfileActivity.this, "Plant Details insert Successfully...", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+                                startActivity(new Intent(ProfileActivity.this, DashboardActivity.class));
                                 finish();
                             }else{
                                 Toast.makeText(ProfileActivity.this, "PA Something went Wrong!!", Toast.LENGTH_SHORT).show();

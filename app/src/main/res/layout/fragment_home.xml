@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/whiteBg"
-    tools:context=".Activities.HomeActivity">
+    tools:context=".Fragments.HomeFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?appBarLayoutStyle"
+        android:layout_height="wrap_content"
         android:background="@color/fontBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -39,11 +39,11 @@
                 android:id="@+id/igPlantImage"
                 android:layout_width="@dimen/_42mdp"
                 android:layout_height="@dimen/_42mdp"
-                app:shapeAppearanceOverlay="@style/roundedImageView"
-                android:scaleType="fitXY"
                 android:layout_marginEnd="@dimen/_6mdp"
                 android:gravity="end"
-                android:src="@drawable/me" />
+                android:scaleType="fitXY"
+                android:src="@drawable/me"
+                app:shapeAppearanceOverlay="@style/roundedImageView" />
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -52,10 +52,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_5mdp"
-        android:layout_marginTop="@dimen/_3mdp"
+        android:layout_marginTop="@dimen/_5mdp"
         android:fontFamily="@font/nunito_bold"
         android:text="Customers"
-        android:textSize="@dimen/_16font_mdp"
+        android:textSize="@dimen/_20font_mdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -63,8 +63,8 @@
         android:id="@+id/crFilter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:layout_marginEnd="@dimen/_5mdp"
+        android:background="@color/whiteBg"
         app:cardCornerRadius="@dimen/_6mdp"
         app:cardElevation="@dimen/_6mdp"
         app:layout_constraintBottom_toBottomOf="@+id/textView7"
@@ -76,14 +76,15 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_5mdp"
             android:background="@drawable/dark_white_bg"
+            android:gravity="center"
             android:drawableStart="@drawable/filter_list_24px"
-            android:fontFamily="@font/nunito_bold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12font_mdp"
             android:drawablePadding="@dimen/_2mdp"
-            android:paddingHorizontal="@dimen/_6mdp"
+            android:fontFamily="@font/nunito_bold"
+            android:paddingHorizontal="@dimen/_5mdp"
             android:paddingVertical="@dimen/_2mdp"
-            android:text="Filter" />
+            android:text="Filter"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12font_mdp" />
 
     </androidx.cardview.widget.CardView>
 
@@ -97,5 +98,4 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
