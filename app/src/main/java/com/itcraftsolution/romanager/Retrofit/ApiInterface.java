@@ -2,6 +2,7 @@ package com.itcraftsolution.romanager.Retrofit;
 
 import android.view.PixelCopy;
 
+import com.itcraftsolution.romanager.Models.CustomerModel;
 import com.itcraftsolution.romanager.Models.ResponseModel;
 
 import okhttp3.MultipartBody;
@@ -21,4 +22,15 @@ public interface ApiInterface {
                                            @Part("plant_phone") RequestBody plant_phone, @Part("plant_email") RequestBody plant_email,
                                            @Part MultipartBody.Part plant_image, @Part("plant_city") RequestBody plant_city,
                                            @Part("plant_address") RequestBody plant_address, @Part("plant_security") RequestBody plant_security);
+
+    @Multipart
+    @POST("add_customer.php")
+    Call<ResponseModel> addCustomerDetails(@Part("cust_name") RequestBody cust_name, @Part("cust_phone") RequestBody cust_phone,
+                                    @Part("cust_address") RequestBody cust_address, @Part("cust_msg") RequestBody cust_msg,
+                                    @Part MultipartBody.Part cust_image);
+
+
+
+
+
 }

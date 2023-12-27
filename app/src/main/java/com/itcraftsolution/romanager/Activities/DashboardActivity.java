@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.window.OnBackInvokedDispatcher;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.itcraftsolution.romanager.Fragments.HomeFragment;

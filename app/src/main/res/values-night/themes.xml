@@ -9,6 +9,12 @@
 
     <style name="roundedImageView">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/_12mdp</item>
+        <item name="cornerSize">@dimen/_18mdp</item>
+    </style>
+
+    <style name="MyFloatingActionButtonStyle" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:tint">@color/white</item>
+        <item name="android:background">@drawable/splash_bg</item>
+        <!-- Additional style attributes -->
     </style>
 </resources>

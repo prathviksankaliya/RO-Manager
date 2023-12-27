@@ -23,6 +23,7 @@
         android:layout_height="@dimen/_120mdp"
         android:layout_marginTop="@dimen/_8mdp"
         android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"
         app:shapeAppearance="@style/roundedImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

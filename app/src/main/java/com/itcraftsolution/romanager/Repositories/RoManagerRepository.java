@@ -1,10 +1,14 @@
 package com.itcraftsolution.romanager.Repositories;
 
 import android.content.Context;
+import android.text.BoringLayout;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.itcraftsolution.romanager.Models.CustomerModel;
 import com.itcraftsolution.romanager.Models.PlantDetailsModel;
 import com.itcraftsolution.romanager.Models.ResponseModel;
 import com.itcraftsolution.romanager.Retrofit.RetrofitInstance;
@@ -46,7 +50,7 @@ public class RoManagerRepository {
                 ResponseModel responseModel = response.body();
                 if (responseModel != null) {
                     mutableLiveData.setValue(true);
-                }else{
+                } else {
                     mutableLiveData.setValue(false);
                 }
             }
@@ -54,6 +58,41 @@ public class RoManagerRepository {
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
                 mutableLiveData.setValue(false);
+            }
+        });
+        return mutableLiveData;
+    }
+
+    public LiveData<Boolean> addCustomerDetails(CustomerModel model) {
+        MutableLiveData<Boolean> mutableLiveData = new MutableLiveData<>();
+        RequestBody cust_name = RequestBody.create(MediaType.parse("text/plain"), model.getCust_name());
+        RequestBody cust_phone = RequestBody.create(MediaType.parse("text/plain"), model.getCust_phone());
+        RequestBody cust_address = RequestBody.create(MediaType.parse("text/plain"), model.getCust_address());
+        RequestBody cust_msg = RequestBody.create(MediaType.parse("text/plain"), model.getCust_msg());
+        MultipartBody.Part custImagePart = null;
+
+        if (!model.getCust_image().isEmpty()) {
+            File plantImageFile = new File(model.getCust_image());
+            custImagePart = MultipartBody.Part.createFormData("cust_image", plantImageFile.getName(),
+                    RequestBody.create(MediaType.parse("image/*"), plantImageFile));
+        }
+
+        RetrofitInstance.apiInterface().addCustomerDetails(cust_name, cust_phone, cust_address, cust_msg, custImagePart).enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                ResponseModel responseModel = response.body();
+                if (responseModel != null) {
+                    mutableLiveData.setValue(true);
+                    Toast.makeText(context, "Api Done!", Toast.LENGTH_SHORT).show();
+                } else {
+                    mutableLiveData.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                mutableLiveData.setValue(false);
+                Log.d("Customer_Api_Log", t.getMessage());
             }
         });
         return mutableLiveData;
