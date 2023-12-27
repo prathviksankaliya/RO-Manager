@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $plant_security = null;
         }
         $current_time = time();
-        $targetDir = "images/";
+        $targetDir = "images/plants/";
         $targetFile = $targetDir . 'IMG_' . $current_time . ".png";
 
         if (move_uploaded_file($_FILES["plant_image"]["tmp_name"], $targetFile)) {
