@@ -8,6 +8,27 @@
     <color name="hintWhiteDark">#8C8C8C</color>
     <color name="statusBarDarkBlue">#4F43A8</color>
 
+    <color name="brown">#EFEBE9</color>
+    <color name="orange">#FBE9E7</color>
+    <color name="yellow">#FFFDE7</color>
+    <color name="lime">#F0F4C3</color>
+    <color name="green">#C8E6C9</color>
+    <color name="teal">#E0F2F1</color>
+    <color name="lightBlue">#E1F5FE</color>
+    <color name="purple">#EDE7F6</color>
+    <color name="red">#FFEBEE</color>
+
+    <integer-array name="lightBgColors">
+        <item>@color/brown</item>
+        <item>@color/orange</item>
+        <item>@color/yellow</item>
+        <item>@color/lime</item>
+        <item>@color/green</item>
+        <item>@color/teal</item>
+        <item>@color/lightBlue</item>
+        <item>@color/purple</item>
+        <item>@color/red</item>
+    </integer-array>
 
 
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.AddCustomerFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -25,13 +25,13 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/baseline_arrow_back_24"
-                />
+                android:src="@drawable/baseline_arrow_back_24" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_6mdp"
+                android:layout_weight="1"
                 android:fontFamily="@font/nunito_bold"
                 android:maxLength="22"
                 android:maxLines="1"
@@ -41,184 +41,183 @@
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/igCustomerImage"
-        android:layout_width="@dimen/_120mdp"
-        android:layout_height="@dimen/_120mdp"
-        android:src="@mipmap/ic_launcher"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="@dimen/_100mdp"
+        android:layout_height="@dimen/_100mdp"
+        android:background="@color/fontBlue"
         android:layout_marginTop="@dimen/_8mdp"
-        android:scaleType="fitXY"
+        app:cardCornerRadius="@dimen/_10mdp"
+        app:cardElevation="@dimen/_6mdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:shapeAppearance="@style/roundedImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-        <ImageView
-            android:id="@+id/igEditProfileImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/light_white_bg"
-            android:padding="@dimen/_3mdp"
-            android:src="@drawable/baseline_create_24"
-            app:layout_constraintBottom_toBottomOf="@+id/igCustomerImage"
-            app:layout_constraintEnd_toEndOf="@+id/igCustomerImage"
-            app:layout_constraintHorizontal_bias="0.95"
-            app:layout_constraintStart_toStartOf="@+id/igCustomerImage"
-            app:layout_constraintTop_toTopOf="@+id/igCustomerImage"
-            app:layout_constraintVertical_bias="0.95" />
-
-        <ImageView
-            android:id="@+id/imageView3"
+        <TextView
+            android:id="@+id/txCustomerNameChar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="@dimen/_6mdp"
-            android:layout_marginTop="@dimen/_14mdp"
-            android:src="@drawable/white_bg"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/igCustomerImage" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_6mdp"
-            android:layout_marginStart="@dimen/_8mdp"
+            android:layout_height="match_parent"
+            android:background="@color/blue"
             android:fontFamily="@font/nunito_bold"
-            android:text="Customer Name"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14font_mdp"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="@+id/imageView3" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_8mdp"
-            android:layout_marginTop="@dimen/_3mdp"
-            android:hint="Customer Name"
-            app:boxBackgroundColor="@color/white"
-            app:boxCornerRadiusBottomEnd="@dimen/_8mdp"
-            app:boxCornerRadiusBottomStart="@dimen/_8mdp"
-            app:boxCornerRadiusTopEnd="@dimen/_8mdp"
-            app:boxCornerRadiusTopStart="@dimen/_8mdp"
-            app:boxStrokeWidth="0dp"
-            app:hintTextColor="@color/blue"
-            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            app:startIconDrawable="@drawable/baseline_account_circle_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edCustomerName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/nunito_semibold"
-                android:inputType="text"
-                android:textColor="@color/blue" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8mdp"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Phone Number"
-            android:layout_marginTop="@dimen/_6mdp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14font_mdp"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_8mdp"
-            android:hint="Phone Number (Optional)"
-            app:boxBackgroundColor="@color/white"
-            app:boxCornerRadiusBottomEnd="@dimen/_8mdp"
-            app:boxCornerRadiusBottomStart="@dimen/_8mdp"
-            app:boxCornerRadiusTopEnd="@dimen/_8mdp"
-            app:boxCornerRadiusTopStart="@dimen/_8mdp"
-            app:boxStrokeWidth="0dp"
-            app:hintTextColor="@color/blue"
-            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:startIconDrawable="@drawable/baseline_call_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edCustomerPhone"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/nunito_semibold"
-                android:inputType="number"
-                android:textColor="@color/blue" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8mdp"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Customer Address"
-            android:textColor="@color/black"
-            android:layout_marginTop="@dimen/_6mdp"
-            android:textSize="@dimen/_14font_mdp"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_8mdp"
-            android:hint="Customer Address"
-            app:boxBackgroundColor="@color/white"
-            app:boxCornerRadiusBottomEnd="@dimen/_8mdp"
-            app:boxCornerRadiusBottomStart="@dimen/_8mdp"
-            app:boxCornerRadiusTopEnd="@dimen/_8mdp"
-            app:boxCornerRadiusTopStart="@dimen/_8mdp"
-            app:boxStrokeWidth="0dp"
-            app:hintTextColor="@color/blue"
-            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:startIconDrawable="@drawable/baseline_add_location_alt_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edCustomerAddress"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/nunito_semibold"
-                android:inputType="text"
-                android:paddingVertical="@dimen/_24mdp"
-                android:textColor="@color/blue" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAddCustomer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/blue_bg"
-            android:backgroundTint="@color/blue"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Add Customer"
-            android:textSize="@dimen/_13font_mdp"
+            android:gravity="center"
+            android:text=""
             android:textColor="@color/white"
-            android:layout_marginTop="@dimen/_12mdp"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+            android:textSize="@dimen/_70font_mdp" />
+    </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_8mdp"
+        android:layout_marginHorizontal="@dimen/_6mdp"
+        android:src="@drawable/white_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8mdp"
+        android:layout_marginTop="@dimen/_6mdp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Customer Name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8mdp"
+        android:layout_marginTop="@dimen/_3mdp"
+        android:hint="Customer Name"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomEnd="@dimen/_8mdp"
+        app:boxCornerRadiusBottomStart="@dimen/_8mdp"
+        app:boxCornerRadiusTopEnd="@dimen/_8mdp"
+        app:boxCornerRadiusTopStart="@dimen/_8mdp"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:startIconDrawable="@drawable/baseline_account_circle_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edCustomerName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_semibold"
+            android:inputType="text"
+            android:textColor="@color/blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8mdp"
+        android:layout_marginTop="@dimen/_6mdp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Phone Number"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8mdp"
+        android:hint="Phone Number (Optional)"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomEnd="@dimen/_8mdp"
+        app:boxCornerRadiusBottomStart="@dimen/_8mdp"
+        app:boxCornerRadiusTopEnd="@dimen/_8mdp"
+        app:boxCornerRadiusTopStart="@dimen/_8mdp"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:startIconDrawable="@drawable/baseline_call_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edCustomerPhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_semibold"
+            android:inputType="number"
+            android:textColor="@color/blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8mdp"
+        android:layout_marginTop="@dimen/_6mdp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Customer Address"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout1" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8mdp"
+        android:hint="Customer Address"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomEnd="@dimen/_8mdp"
+        app:boxCornerRadiusBottomStart="@dimen/_8mdp"
+        app:boxCornerRadiusTopEnd="@dimen/_8mdp"
+        app:boxCornerRadiusTopStart="@dimen/_8mdp"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:startIconDrawable="@drawable/baseline_add_location_alt_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edCustomerAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_semibold"
+            android:inputType="text"
+            android:paddingVertical="@dimen/_24mdp"
+            android:textColor="@color/blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddCustomer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12mdp"
+        android:background="@drawable/blue_bg"
+        android:backgroundTint="@color/blue"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Add Customer"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_13font_mdp"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

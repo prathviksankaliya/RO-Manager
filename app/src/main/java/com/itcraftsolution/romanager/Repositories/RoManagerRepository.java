@@ -69,15 +69,15 @@ public class RoManagerRepository {
         RequestBody cust_phone = RequestBody.create(MediaType.parse("text/plain"), model.getCust_phone());
         RequestBody cust_address = RequestBody.create(MediaType.parse("text/plain"), model.getCust_address());
         RequestBody cust_msg = RequestBody.create(MediaType.parse("text/plain"), model.getCust_msg());
-        MultipartBody.Part custImagePart = null;
 
-        if (!model.getCust_image().isEmpty()) {
-            File plantImageFile = new File(model.getCust_image());
-            custImagePart = MultipartBody.Part.createFormData("cust_image", plantImageFile.getName(),
-                    RequestBody.create(MediaType.parse("image/*"), plantImageFile));
-        }
+//        MultipartBody.Part custImagePart = null;
+//        if (!model.getCust_image().isEmpty()) {
+//            File plantImageFile = new File(model.getCust_image());
+//            custImagePart = MultipartBody.Part.createFormData("cust_image", plantImageFile.getName(),
+//                    RequestBody.create(MediaType.parse("image/*"), plantImageFile));
+//        }
 
-        RetrofitInstance.apiInterface().addCustomerDetails(cust_name, cust_phone, cust_address, cust_msg, custImagePart).enqueue(new Callback<ResponseModel>() {
+        RetrofitInstance.apiInterface().addCustomerDetails(cust_name, cust_phone, cust_address, cust_msg).enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 ResponseModel responseModel = response.body();

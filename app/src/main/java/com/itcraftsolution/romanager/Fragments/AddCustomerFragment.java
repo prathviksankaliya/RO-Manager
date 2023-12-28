@@ -15,7 +15,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -34,9 +37,9 @@ public class AddCustomerFragment extends Fragment {
 
     private FragmentAddCustomerBinding binding;
     private RoManagerViewModel viewModel;
-    private ActivityResultLauncher<Intent> launcher;
-    private Uri selectedImageUri;
-    private String imgPath = "";
+//    private ActivityResultLauncher<Intent> launcher;
+//    private Uri selectedImageUri;
+//    private String imgPath = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,6 +50,26 @@ public class AddCustomerFragment extends Fragment {
         requireActivity().findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         viewModel = ViewModelProviders.of(AddCustomerFragment.this).get(RoManagerViewModel.class);
 
+        binding.edCustomerName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 0) {
+                    binding.txCustomerNameChar.setText(String.valueOf(Character.toUpperCase(charSequence.charAt(0))));
+                } else {
+                    binding.txCustomerNameChar.setText("");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         binding.btnAddCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,14 +79,14 @@ public class AddCustomerFragment extends Fragment {
                 }else if(!binding.edCustomerPhone.getText().toString().isEmpty() && binding.edCustomerPhone.getText().length() != 10){
                     binding.edCustomerPhone.setError("Please enter valid Phone Number!!");
                     binding.edCustomerPhone.requestFocus();
-                }else if(binding.edCustomerAddress.getText().toString().isEmpty() || binding.edCustomerPhone.getText().length() <= 5){
+                }else if(binding.edCustomerAddress.getText().toString().isEmpty() || binding.edCustomerAddress.getText().length() <= 5){
                     binding.edCustomerAddress.setError("Please enter valid Address!!");
                     binding.edCustomerAddress.requestFocus();
                 }else{
                     String cust_name = binding.edCustomerName.getText().toString();
                     String cust_phone = binding.edCustomerPhone.getText().toString();
                     String cust_address = binding.edCustomerAddress.getText().toString();
-                    CustomerModel model = new CustomerModel(0, 1, cust_name, imgPath, cust_phone, cust_address, "", "");
+                    CustomerModel model = new CustomerModel(0, 1, cust_name, cust_phone, cust_address, "", "");
                     viewModel.addCustomerDetails(model).observe(getViewLifecycleOwner(), new Observer<Boolean>() {
                         @Override
                         public void onChanged(Boolean aBoolean) {
@@ -77,29 +100,6 @@ public class AddCustomerFragment extends Fragment {
                     });
                 }
 
-            }
-        });
-
-        binding.igEditProfileImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                launcher.launch(intent);
-            }
-        });
-        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if(result.getResultCode() == Activity.RESULT_OK){
-                    Intent data = result.getData();
-                    if(data != null && data.getData() != null){
-                        selectedImageUri = data.getData();
-                        imgPath = FileUtils.getPathFromContentUri(requireContext(), selectedImageUri);
-                        Glide.with(AddCustomerFragment.this).load(selectedImageUri).into(binding.igCustomerImage);
-                    }
-                }else{
-                    Toast.makeText(requireContext(), "Profile Upload Failed!", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 

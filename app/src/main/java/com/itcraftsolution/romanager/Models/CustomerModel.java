@@ -2,13 +2,12 @@ package com.itcraftsolution.romanager.Models;
 
 public class CustomerModel {
     private int cust_id, status;
-    private String cust_name, cust_image, cust_phone, cust_address, cust_date, cust_msg;
+    private String cust_name, cust_phone, cust_address, cust_date, cust_msg;
 
-    public CustomerModel(int cust_id, int status, String cust_name, String cust_image, String cust_phone, String cust_address, String cust_date, String cust_msg) {
+    public CustomerModel(int cust_id, int status, String cust_name, String cust_phone, String cust_address, String cust_date, String cust_msg) {
         this.cust_id = cust_id;
         this.status = status;
         this.cust_name = cust_name;
-        this.cust_image = cust_image;
         this.cust_phone = cust_phone;
         this.cust_address = cust_address;
         this.cust_date = cust_date;
@@ -40,14 +39,6 @@ public class CustomerModel {
 
     public void setCust_name(String cust_name) {
         this.cust_name = cust_name;
-    }
-
-    public String getCust_image() {
-        return cust_image;
-    }
-
-    public void setCust_image(String cust_image) {
-        this.cust_image = cust_image;
     }
 
     public String getCust_phone() {

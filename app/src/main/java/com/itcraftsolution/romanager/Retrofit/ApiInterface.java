@@ -26,8 +26,7 @@ public interface ApiInterface {
     @Multipart
     @POST("add_customer.php")
     Call<ResponseModel> addCustomerDetails(@Part("cust_name") RequestBody cust_name, @Part("cust_phone") RequestBody cust_phone,
-                                    @Part("cust_address") RequestBody cust_address, @Part("cust_msg") RequestBody cust_msg,
-                                    @Part MultipartBody.Part cust_image);
+                                    @Part("cust_address") RequestBody cust_address, @Part("cust_msg") RequestBody cust_msg);
 
 
 
