@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.itcraftsolution.romanager.Models.CustomerModel;
+import com.itcraftsolution.romanager.Models.CustomerResponse;
 import com.itcraftsolution.romanager.Models.PlantDetailsModel;
 import com.itcraftsolution.romanager.Models.ResponseModel;
 import com.itcraftsolution.romanager.Retrofit.RetrofitInstance;
@@ -70,20 +71,12 @@ public class RoManagerRepository {
         RequestBody cust_address = RequestBody.create(MediaType.parse("text/plain"), model.getCust_address());
         RequestBody cust_msg = RequestBody.create(MediaType.parse("text/plain"), model.getCust_msg());
 
-//        MultipartBody.Part custImagePart = null;
-//        if (!model.getCust_image().isEmpty()) {
-//            File plantImageFile = new File(model.getCust_image());
-//            custImagePart = MultipartBody.Part.createFormData("cust_image", plantImageFile.getName(),
-//                    RequestBody.create(MediaType.parse("image/*"), plantImageFile));
-//        }
-
         RetrofitInstance.apiInterface().addCustomerDetails(cust_name, cust_phone, cust_address, cust_msg).enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 ResponseModel responseModel = response.body();
                 if (responseModel != null) {
                     mutableLiveData.setValue(true);
-                    Toast.makeText(context, "Api Done!", Toast.LENGTH_SHORT).show();
                 } else {
                     mutableLiveData.setValue(false);
                 }
@@ -96,5 +89,30 @@ public class RoManagerRepository {
             }
         });
         return mutableLiveData;
+    }
+
+    public LiveData<CustomerResponse> getAllCustomers() {
+        MutableLiveData<CustomerResponse> liveData = new MutableLiveData<>();
+        RetrofitInstance.apiInterface().getAllCustomers().enqueue(new Callback<CustomerResponse>() {
+            @Override
+            public void onResponse(Call<CustomerResponse> call, Response<CustomerResponse> response) {
+                CustomerResponse customerResponse = response.body();
+                if (customerResponse != null) {
+                    if (customerResponse.getStatus().equals("success")) {
+                        liveData.setValue(customerResponse);
+                    }else{
+                        Toast.makeText(context, customerResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.d("Rv_Customer", "Repo : " + customerResponse.getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CustomerResponse> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("Rv_Customer", "repo fail : " +t.getMessage());
+            }
+        });
+        return liveData;
     }
 }

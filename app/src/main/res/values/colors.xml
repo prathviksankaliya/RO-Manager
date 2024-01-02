@@ -16,7 +16,7 @@
     <color name="teal">#E0F2F1</color>
     <color name="lightBlue">#E1F5FE</color>
     <color name="purple">#EDE7F6</color>
-    <color name="red">#FFEBEE</color>
+    <color name="red">#BEFF0026</color>
 
     <integer-array name="lightBgColors">
         <item>@color/brown</item>

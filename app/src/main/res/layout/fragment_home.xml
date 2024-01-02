@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/whiteBg"
@@ -77,10 +76,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_5mdp"
             android:background="@drawable/dark_white_bg"
-            android:gravity="center"
             android:drawableStart="@drawable/filter_list_24px"
             android:drawablePadding="@dimen/_2mdp"
             android:fontFamily="@font/nunito_bold"
+            android:gravity="center"
             android:paddingHorizontal="@dimen/_5mdp"
             android:paddingVertical="@dimen/_2mdp"
             android:text="Filter"
@@ -94,25 +93,62 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_3mdp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
+    <LinearLayout
+        android:id="@+id/llNotFound"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/fabAddCustomer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+        <ImageView
+            android:layout_width="@dimen/_246mdp"
+            android:layout_height="@dimen/_246mdp"
+            android:src="@drawable/not_found" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center"
+            android:text="Add customer now"
+            android:textColor="@color/fontBlue"
+            android:textSize="@dimen/_20font_mdp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/_10mdp"
+            android:rotation="17"
+            android:src="@drawable/arrow_down" />
+
+    </LinearLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddCustomer"
+        style="@style/MyFloatingActionButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/person_add_24px"
+        android:layout_marginEnd="@dimen/_6mdp"
+        android:layout_marginBottom="@dimen/_6mdp"
         android:background="@drawable/light_white_bg"
         android:backgroundTint="@color/blue"
-        style="@style/MyFloatingActionButtonStyle"
-        android:layout_marginBottom="@dimen/_6mdp"
-        android:layout_marginEnd="@dimen/_6mdp"
+        android:src="@drawable/person_add_24px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

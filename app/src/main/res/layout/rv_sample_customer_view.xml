@@ -6,22 +6,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/_10mdp"
     app:cardElevation="@dimen/_6mdp"
-    android:layout_margin="@dimen/_6mdp">
+    android:layout_marginHorizontal="@dimen/_6mdp"
+    android:layout_marginVertical="@dimen/_4mdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/_5mdp"
+        android:paddingVertical="@dimen/_6mdp"
+        android:paddingHorizontal="@dimen/_5mdp"
         >
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/igCustomerImage"
+        <View
+            android:id="@+id/view"
             android:layout_width="@dimen/_42mdp"
             android:layout_height="@dimen/_42mdp"
-            android:src="@drawable/me"
+            android:background="@drawable/blue_bg"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/roundedImageView" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txCustomerRvNameChar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="A"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_24font_mdp"
+            android:fontFamily="@font/nunito_bold"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view" />
 
         <TextView
             android:id="@+id/txCustomerName"
@@ -36,8 +51,8 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_16font_mdp"
             app:layout_constraintEnd_toStartOf="@+id/txCustomerPrice"
-            app:layout_constraintStart_toEndOf="@+id/igCustomerImage"
-            app:layout_constraintTop_toTopOf="@+id/igCustomerImage" />
+            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view" />
 
         <TextView
             android:id="@+id/txCustomerMsg"
@@ -45,7 +60,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:text="500 Credit added on 12 Aug 2023"
-            app:layout_constraintBottom_toBottomOf="@+id/igCustomerImage"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
             app:layout_constraintEnd_toEndOf="@+id/txCustomerName"
             app:layout_constraintStart_toStartOf="@+id/txCustomerName"
             app:layout_constraintTop_toBottomOf="@+id/txCustomerName" />
