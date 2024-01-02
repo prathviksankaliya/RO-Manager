@@ -4,7 +4,7 @@ require("./config/dbconnection.php");
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $sql = "select * from customer_details";
     if ($q = mysqli_query($con, $sql)) {
-        $customers = mysqli_fetch_all($q);
+        $customers = mysqli_fetch_all($q, MYSQLI_ASSOC);
         $output = array('status' => 'success', 'data' => $customers);
     } else {
         $output = array('status' => 'fail', 'message' => 'Api Request Error!!');
