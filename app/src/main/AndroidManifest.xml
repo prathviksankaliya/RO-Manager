@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.AddCustomerTransactionActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.CustomerTransactionActivity"
             android:exported="false" />
         <activity
@@ -24,7 +27,7 @@
             android:exported="false" />
         <activity
             android:name=".Activities.ProfileActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".Activities.VerifyOtpActivity"
             android:exported="false" />

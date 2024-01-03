@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/white_bg"
-    tools:context=".Activities.CustomerTransactionActivity">
+    android:background="@color/whiteBg"
+    tools:context=".Activities.AddCustomerTransactionActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -59,7 +59,6 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
-            android:id="@+id/txCustTransactionMoneyStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_bold"
@@ -67,7 +66,7 @@
             android:textSize="@dimen/_17font_mdp" />
 
         <TextView
-            android:id="@+id/txCustTransactionBalance"
+            android:id="@+id/txCustomerTotalBalance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_bold"
@@ -77,62 +76,75 @@
             android:textSize="@dimen/_17font_mdp" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCustomerTransactions"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+    <TextView
+        android:id="@+id/txAddTransactionDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6mdp"
+        android:background="@drawable/transaction_bg"
+        android:fontFamily="@font/nunito_bold"
+        android:padding="@dimen/_5mdp"
+        android:text="16 Aug 2023"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/edAddTransaction"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_6mdp"
-        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_6mdp"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="center"
+        android:text="₹ 300"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_21font_mdp"
+        app:layout_constraintEnd_toEndOf="@+id/txAddTransactionDate"
+        app:layout_constraintStart_toStartOf="@+id/txAddTransactionDate"
+        app:layout_constraintTop_toBottomOf="@+id/txAddTransactionDate" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edAddTransactionNotes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8mdp"
+        android:hint="Add Note (Optional)"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginBottom="@dimen/_8mdp"
+        app:boxCornerRadiusBottomEnd="@dimen/_8mdp"
+        app:boxCornerRadiusBottomStart="@dimen/_8mdp"
+        app:boxCornerRadiusTopEnd="@dimen/_8mdp"
+        app:boxCornerRadiusTopStart="@dimen/_8mdp"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddTransaction"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:startIconDrawable="@drawable/add_notes_24px">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnTransactionReceived"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_6mdp"
-            android:layout_weight="1"
-            android:background="@drawable/transaction_bg"
-            android:drawableTop="@drawable/baseline_arrow_downward_24"
-            android:fontFamily="@font/nunito_bold"
-            android:gravity="center"
-            android:text="Received"
-            android:textAllCaps="false"
-            android:textColor="@color/green"
-            android:textSize="@dimen/_16font_mdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edProfilePlantName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_semibold"
+            android:inputType="text"
+            android:textColor="@color/blue" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnTransactionGiven"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_6mdp"
-            android:layout_weight="1"
-            android:background="@drawable/transaction_bg"
-            android:drawableTop="@drawable/baseline_arrow_upward_24"
-            android:fontFamily="@font/nunito_bold"
-            android:gravity="center"
-            android:text="Given"
-            android:textAllCaps="false"
-            android:textColor="@color/red"
-            android:textSize="@dimen/_16font_mdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddTransaction"
+        style="@style/MyFloatingActionButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_6mdp"
+        android:background="@drawable/light_white_bg"
+        android:backgroundTint="@color/blue"
+        android:src="@drawable/baseline_done_24"
+        app:layout_constraintBottom_toBottomOf="@+id/edAddTransactionNotes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="@dimen/_24mdp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

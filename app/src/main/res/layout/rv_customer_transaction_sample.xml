@@ -85,6 +85,17 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <TextView
+            android:id="@+id/txTransactionGivenLeftBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="₹ 300 Due"
+            android:layout_marginTop="@dimen/_3mdp"
+            android:textSize="@dimen/_13font_mdp"
+            app:layout_constraintEnd_toEndOf="@+id/layoutReceivedTransaction"
+            app:layout_constraintTop_toBottomOf="@+id/layoutReceivedTransaction" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutGivenTransaction"
             android:layout_width="@dimen/_150mdp"
@@ -141,6 +152,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/txTransactionReceivedDesc" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txTransactionReceivedLeftBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="₹ 300 Due"
+            android:textSize="@dimen/_13font_mdp"
+            android:layout_marginTop="@dimen/_3mdp"
+            app:layout_constraintStart_toStartOf="@+id/layoutGivenTransaction"
+            app:layout_constraintTop_toBottomOf="@+id/layoutGivenTransaction" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
