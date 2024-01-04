@@ -69,9 +69,8 @@ public class RoManagerRepository {
         RequestBody cust_name = RequestBody.create(MediaType.parse("text/plain"), model.getCust_name());
         RequestBody cust_phone = RequestBody.create(MediaType.parse("text/plain"), model.getCust_phone());
         RequestBody cust_address = RequestBody.create(MediaType.parse("text/plain"), model.getCust_address());
-        RequestBody cust_msg = RequestBody.create(MediaType.parse("text/plain"), model.getCust_msg());
 
-        RetrofitInstance.apiInterface().addCustomerDetails(cust_name, cust_phone, cust_address, cust_msg).enqueue(new Callback<ResponseModel>() {
+        RetrofitInstance.apiInterface().addCustomerDetails(cust_name, cust_phone, cust_address).enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 ResponseModel responseModel = response.body();

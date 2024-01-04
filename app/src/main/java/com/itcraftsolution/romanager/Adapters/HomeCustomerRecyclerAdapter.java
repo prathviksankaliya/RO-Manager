@@ -36,8 +36,14 @@ public class HomeCustomerRecyclerAdapter extends RecyclerView.Adapter<HomeCustom
         CustomerModel model = list.get(position);
         holder.binding.txCustomerRvNameChar.setText(model.getCust_name().substring(0, 1));
         holder.binding.txCustomerName.setText(model.getCust_name());
-//        holder.binding.txCustomerStatus.setText(model.getCust_status());
-//        holder.binding.txCustomerMsg.setText(model.getCust_msg());
+        holder.binding.txCustomerMsg.setText(model.getCust_msg());
+        if(model.getTotal_balance() <= 0){
+            holder.binding.txCustomerPrice.setTextColor(context.getResources().getColor(R.color.red, null));
+        }else{
+            holder.binding.txCustomerPrice.setTextColor(context.getResources().getColor(R.color.green, null));
+        }
+        holder.binding.txCustomerPrice.setText("₹ " + String.valueOf(model.getTotal_balance()));
+        holder.binding.txCustomerStatus.setText(model.getMoney_status());
     }
 
     @Override

@@ -86,7 +86,7 @@ public class AddCustomerFragment extends Fragment {
                     String cust_name = binding.edCustomerName.getText().toString();
                     String cust_phone = binding.edCustomerPhone.getText().toString();
                     String cust_address = binding.edCustomerAddress.getText().toString();
-                    CustomerModel model = new CustomerModel(0, 1, cust_name, cust_phone, cust_address, "", "");
+                    CustomerModel model = new CustomerModel(cust_name, cust_phone, cust_address);
                     viewModel.addCustomerDetails(model).observe(getViewLifecycleOwner(), new Observer<Boolean>() {
                         @Override
                         public void onChanged(Boolean aBoolean) {

@@ -1,17 +1,25 @@
 package com.itcraftsolution.romanager.Models;
 
 public class CustomerModel {
-    private int cust_id, cust_status;
-    private String cust_name, cust_phone, cust_address, cust_date, cust_msg;
+    private int cust_id, cust_status, total_balance;
+    private String cust_name, cust_phone, cust_address, cust_date, money_status,cust_msg;
 
-    public CustomerModel(int cust_id, int cust_status, String cust_name, String cust_phone, String cust_address, String cust_date, String cust_msg) {
+    public CustomerModel(int cust_id, int cust_status, int total_balance, String cust_name, String cust_phone, String cust_address, String cust_date, String money_status, String cust_msg) {
         this.cust_id = cust_id;
         this.cust_status = cust_status;
+        this.total_balance = total_balance;
         this.cust_name = cust_name;
         this.cust_phone = cust_phone;
         this.cust_address = cust_address;
         this.cust_date = cust_date;
+        this.money_status = money_status;
         this.cust_msg = cust_msg;
+    }
+
+    public CustomerModel(String cust_name, String cust_phone, String cust_address) {
+        this.cust_name = cust_name;
+        this.cust_phone = cust_phone;
+        this.cust_address = cust_address;
     }
 
     public CustomerModel() {
@@ -31,6 +39,14 @@ public class CustomerModel {
 
     public void setCust_status(int cust_status) {
         this.cust_status = cust_status;
+    }
+
+    public int getTotal_balance() {
+        return total_balance;
+    }
+
+    public void setTotal_balance(int total_balance) {
+        this.total_balance = total_balance;
     }
 
     public String getCust_name() {
@@ -63,6 +79,14 @@ public class CustomerModel {
 
     public void setCust_date(String cust_date) {
         this.cust_date = cust_date;
+    }
+
+    public String getMoney_status() {
+        return money_status;
+    }
+
+    public void setMoney_status(String money_status) {
+        this.money_status = money_status;
     }
 
     public String getCust_msg() {
