@@ -52,13 +52,14 @@
         android:background="@drawable/transaction_bg"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/_8mdp"
-        android:paddingVertical="@dimen/_6mdp"
+        android:paddingVertical="@dimen/_8mdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
+            android:id="@+id/txAddTransactionMoneyStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_bold"
@@ -82,9 +83,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_6mdp"
         android:background="@drawable/transaction_bg"
-        android:fontFamily="@font/nunito_bold"
+        android:fontFamily="@font/nunito_semibold"
         android:padding="@dimen/_5mdp"
         android:text="16 Aug 2023"
+        android:textSize="@dimen/_12font_mdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,34 +96,91 @@
         android:id="@+id/edAddTransaction"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_6mdp"
+        android:layout_marginTop="@dimen/_12mdp"
         android:fontFamily="@font/nunito_bold"
         android:gravity="center"
-        android:text="₹ 300"
+        android:text=""
+        android:enabled="false"
         android:textColor="@color/red"
-        android:textSize="@dimen/_21font_mdp"
+        android:textSize="@dimen/_25font_mdp"
         app:layout_constraintEnd_toEndOf="@+id/txAddTransactionDate"
         app:layout_constraintStart_toStartOf="@+id/txAddTransactionDate"
         app:layout_constraintTop_toBottomOf="@+id/txAddTransactionDate" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edAddTransactionNotes"
+        android:id="@+id/textInputLayout5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_8mdp"
-        android:hint="Add Note (Optional)"
+        android:hint="Add number of jag"
+        android:layout_marginTop="@dimen/_12mdp"
         app:boxBackgroundColor="@color/white"
-        android:layout_marginBottom="@dimen/_8mdp"
         app:boxCornerRadiusBottomEnd="@dimen/_8mdp"
         app:boxCornerRadiusBottomStart="@dimen/_8mdp"
         app:boxCornerRadiusTopEnd="@dimen/_8mdp"
         app:boxCornerRadiusTopStart="@dimen/_8mdp"
         app:boxStrokeWidth="0dp"
         app:hintTextColor="@color/blue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAddTransaction"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/edAddTransaction"
+        app:startIconDrawable="@drawable/jag_24px">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edJag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_semibold"
+            android:inputType="number"
+            android:textColor="@color/blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Add number of bottle"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginTop="@dimen/_6mdp"
+        app:boxCornerRadiusBottomEnd="@dimen/_8mdp"
+        app:boxCornerRadiusBottomStart="@dimen/_8mdp"
+        app:boxCornerRadiusTopEnd="@dimen/_8mdp"
+        app:boxCornerRadiusTopStart="@dimen/_8mdp"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"
+        app:startIconDrawable="@drawable/bottle_24px">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edBottle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_semibold"
+            android:inputType="number"
+            android:textColor="@color/blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edAddTransactionNotes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Add Note (Optional)"
+        android:layout_marginTop="@dimen/_6mdp"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomEnd="@dimen/_8mdp"
+        app:boxCornerRadiusBottomStart="@dimen/_8mdp"
+        app:boxCornerRadiusTopEnd="@dimen/_8mdp"
+        app:boxCornerRadiusTopStart="@dimen/_8mdp"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
         app:startIconDrawable="@drawable/add_notes_24px">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -133,18 +192,19 @@
             android:textColor="@color/blue" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAddTransaction"
-        style="@style/MyFloatingActionButtonStyle"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_6mdp"
-        android:background="@drawable/light_white_bg"
-        android:backgroundTint="@color/blue"
-        android:src="@drawable/baseline_done_24"
-        app:layout_constraintBottom_toBottomOf="@+id/edAddTransactionNotes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="@dimen/_24mdp" />
+        android:background="@drawable/blue_bg"
+        android:layout_marginTop="@dimen/_16mdp"
+        android:textColor="@color/white"
+        android:padding="@dimen/_6mdp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Add Transaction"
+        app:layout_constraintEnd_toEndOf="@+id/edAddTransactionNotes"
+        app:layout_constraintStart_toStartOf="@+id/edAddTransactionNotes"
+        app:layout_constraintTop_toBottomOf="@+id/edAddTransactionNotes" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

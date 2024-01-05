@@ -1,6 +1,7 @@
 package com.itcraftsolution.romanager.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.itcraftsolution.romanager.Activities.CustomerTransactionActivity;
 import com.itcraftsolution.romanager.Models.CustomerModel;
 import com.itcraftsolution.romanager.R;
 import com.itcraftsolution.romanager.databinding.RvSampleCustomerViewBinding;
@@ -44,6 +46,16 @@ public class HomeCustomerRecyclerAdapter extends RecyclerView.Adapter<HomeCustom
         }
         holder.binding.txCustomerPrice.setText("₹ " + String.valueOf(model.getTotal_balance()));
         holder.binding.txCustomerStatus.setText(model.getMoney_status());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, CustomerTransactionActivity.class)
+                        .putExtra("custName", model.getCust_name())
+                        .putExtra("moneyStatus", model.getMoney_status())
+                        .putExtra("totalBalance", model.getTotal_balance()));
+            }
+        });
     }
 
     @Override
