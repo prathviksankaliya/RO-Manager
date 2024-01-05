@@ -1,7 +1,7 @@
 package com.itcraftsolution.romanager.Models;
 
 public class PlantDetailsModel {
-    private int plant_id, plant_status;
+    private int plant_id, plant_status, jag_price, bottle_price;
     private String authId, plantName, plantPhone, plantEmail, plantImage, plantCity, plantAddress, plantSecurity;
 
     public PlantDetailsModel(int plant_id, String authId, String plantName, String plantPhone, String plantEmail, String plantImage, String plantCity, String plantAddress, String plantSecurity,  int plant_status) {
@@ -95,5 +95,21 @@ public class PlantDetailsModel {
 
     public void setPlantSecurity(String plantSecurity) {
         this.plantSecurity = plantSecurity;
+    }
+
+    public int getJag_price() {
+        return jag_price;
+    }
+
+    public void setJag_price(int jag_price) {
+        this.jag_price = jag_price;
+    }
+
+    public int getBottle_price() {
+        return bottle_price;
+    }
+
+    public void setBottle_price(int bottle_price) {
+        this.bottle_price = bottle_price;
     }
 }

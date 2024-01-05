@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 
 import com.itcraftsolution.romanager.Models.CustomerModel;
 import com.itcraftsolution.romanager.Models.CustomerResponse;
+import com.itcraftsolution.romanager.Models.CustomerTransactionModel;
 import com.itcraftsolution.romanager.Models.PlantDetailsModel;
 import com.itcraftsolution.romanager.Repositories.RoManagerRepository;
 
@@ -30,6 +31,10 @@ public class RoManagerViewModel extends AndroidViewModel {
 
     public LiveData<CustomerResponse> getAllCustomers(){
         return repository.getAllCustomers();
+    }
+
+    public LiveData<Boolean> addCustomerGivenTransaction(CustomerTransactionModel model){
+        return repository.addCustomerGivenTransaction(model);
     }
 
 }

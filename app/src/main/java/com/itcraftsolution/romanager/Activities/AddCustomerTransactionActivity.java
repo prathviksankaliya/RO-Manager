@@ -3,6 +3,7 @@ package com.itcraftsolution.romanager.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.itcraftsolution.romanager.R;
 import com.itcraftsolution.romanager.databinding.ActivityAddCustomerTransactionBinding;
@@ -24,6 +25,18 @@ public class AddCustomerTransactionActivity extends AppCompatActivity {
 
         loadData();
 
+        binding.btnAddTransaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!binding.edJag.getText().toString().isEmpty() && Integer.parseInt(binding.edJag.getText().toString()) <= 0){
+                    binding.edJag.setError("Plz Enter Valid Number of Jag!!");
+                    binding.edJag.requestFocus();
+                }else if(!binding.edBottle.getText().toString().isEmpty() && Integer.parseInt(binding.edBottle.getText().toString()) <= 0){
+                    binding.edBottle.setError("Plz Enter Valid Number of Bottle!!");
+                    binding.edBottle.requestFocus();
+                }
+            }
+        });
 
     }
     private void loadData(){

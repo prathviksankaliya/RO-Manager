@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.itcraftsolution.romanager.Models.CustomerModel;
 import com.itcraftsolution.romanager.Models.CustomerResponse;
+import com.itcraftsolution.romanager.Models.CustomerTransactionModel;
 import com.itcraftsolution.romanager.Models.PlantDetailsModel;
 import com.itcraftsolution.romanager.Models.ResponseModel;
 import com.itcraftsolution.romanager.Retrofit.RetrofitInstance;
@@ -114,4 +115,25 @@ public class RoManagerRepository {
         });
         return liveData;
     }
+
+    public LiveData<Boolean> addCustomerGivenTransaction(CustomerTransactionModel model){
+        MutableLiveData<Boolean> liveData = new MutableLiveData<>();
+        RetrofitInstance.apiInterface().addCustomerGivenTransaction(model.getCust_id(), model.getDebit(), model.getJag(), model.getBottle(), model.getNote(), model.getCust_tra_date()).enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                ResponseModel responseModel = response.body();
+                if (responseModel != null) {
+                    liveData.setValue(true);
+                } else {
+                    liveData.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                liveData.setValue(false);
+            }
+        });
+        return liveData;
+     }
 }
