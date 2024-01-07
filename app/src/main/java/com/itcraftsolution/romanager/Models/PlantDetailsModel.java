@@ -2,19 +2,37 @@ package com.itcraftsolution.romanager.Models;
 
 public class PlantDetailsModel {
     private int plant_id, plant_status, jag_price, bottle_price;
-    private String authId, plantName, plantPhone, plantEmail, plantImage, plantCity, plantAddress, plantSecurity;
+    private String auth_id, plant_name, plant_phone, plant_email, plant_image, plant_city, plant_address, plant_security;
 
-    public PlantDetailsModel(int plant_id, String authId, String plantName, String plantPhone, String plantEmail, String plantImage, String plantCity, String plantAddress, String plantSecurity,  int plant_status) {
+    public PlantDetailsModel(int plant_id, int plant_status, int jag_price, int bottle_price, String auth_id, String plant_name, String plant_phone, String plant_email, String plant_image, String plant_city, String plant_address, String plant_security) {
         this.plant_id = plant_id;
         this.plant_status = plant_status;
-        this.authId = authId;
-        this.plantName = plantName;
-        this.plantPhone = plantPhone;
-        this.plantEmail = plantEmail;
-        this.plantImage = plantImage;
-        this.plantCity = plantCity;
-        this.plantAddress = plantAddress;
-        this.plantSecurity = plantSecurity;
+        this.jag_price = jag_price;
+        this.bottle_price = bottle_price;
+        this.auth_id = auth_id;
+        this.plant_name = plant_name;
+        this.plant_phone = plant_phone;
+        this.plant_email = plant_email;
+        this.plant_image = plant_image;
+        this.plant_city = plant_city;
+        this.plant_address = plant_address;
+        this.plant_security = plant_security;
+    }
+
+    public PlantDetailsModel() {
+    }
+
+    public PlantDetailsModel(int jag_price, int bottle_price, String auth_id, String plant_name, String plant_phone, String plant_email, String plant_image, String plant_city, String plant_address, String plant_security) {
+        this.jag_price = jag_price;
+        this.bottle_price = bottle_price;
+        this.auth_id = auth_id;
+        this.plant_name = plant_name;
+        this.plant_phone = plant_phone;
+        this.plant_email = plant_email;
+        this.plant_image = plant_image;
+        this.plant_city = plant_city;
+        this.plant_address = plant_address;
+        this.plant_security = plant_security;
     }
 
     public int getPlant_id() {
@@ -33,70 +51,6 @@ public class PlantDetailsModel {
         this.plant_status = plant_status;
     }
 
-    public String getAuthId() {
-        return authId;
-    }
-
-    public void setAuthId(String authId) {
-        this.authId = authId;
-    }
-
-    public String getPlantName() {
-        return plantName;
-    }
-
-    public void setPlantName(String plantName) {
-        this.plantName = plantName;
-    }
-
-    public String getPlantPhone() {
-        return plantPhone;
-    }
-
-    public void setPlantPhone(String plantPhone) {
-        this.plantPhone = plantPhone;
-    }
-
-    public String getPlantEmail() {
-        return plantEmail;
-    }
-
-    public void setPlantEmail(String plantEmail) {
-        this.plantEmail = plantEmail;
-    }
-
-    public String getPlantImage() {
-        return plantImage;
-    }
-
-    public void setPlantImage(String plantImage) {
-        this.plantImage = plantImage;
-    }
-
-    public String getPlantCity() {
-        return plantCity;
-    }
-
-    public void setPlantCity(String plantCity) {
-        this.plantCity = plantCity;
-    }
-
-    public String getPlantAddress() {
-        return plantAddress;
-    }
-
-    public void setPlantAddress(String plantAddress) {
-        this.plantAddress = plantAddress;
-    }
-
-    public String getPlantSecurity() {
-        return plantSecurity;
-    }
-
-    public void setPlantSecurity(String plantSecurity) {
-        this.plantSecurity = plantSecurity;
-    }
-
     public int getJag_price() {
         return jag_price;
     }
@@ -111,5 +65,69 @@ public class PlantDetailsModel {
 
     public void setBottle_price(int bottle_price) {
         this.bottle_price = bottle_price;
+    }
+
+    public String getAuth_id() {
+        return auth_id;
+    }
+
+    public void setAuth_id(String auth_id) {
+        this.auth_id = auth_id;
+    }
+
+    public String getPlant_name() {
+        return plant_name;
+    }
+
+    public void setPlant_name(String plant_name) {
+        this.plant_name = plant_name;
+    }
+
+    public String getPlant_phone() {
+        return plant_phone;
+    }
+
+    public void setPlant_phone(String plant_phone) {
+        this.plant_phone = plant_phone;
+    }
+
+    public String getPlant_email() {
+        return plant_email;
+    }
+
+    public void setPlant_email(String plant_email) {
+        this.plant_email = plant_email;
+    }
+
+    public String getPlant_image() {
+        return plant_image;
+    }
+
+    public void setPlant_image(String plant_image) {
+        this.plant_image = plant_image;
+    }
+
+    public String getPlant_city() {
+        return plant_city;
+    }
+
+    public void setPlant_city(String plant_city) {
+        this.plant_city = plant_city;
+    }
+
+    public String getPlant_address() {
+        return plant_address;
+    }
+
+    public void setPlant_address(String plant_address) {
+        this.plant_address = plant_address;
+    }
+
+    public String getPlant_security() {
+        return plant_security;
+    }
+
+    public void setPlant_security(String plant_security) {
+        this.plant_security = plant_security;
     }
 }

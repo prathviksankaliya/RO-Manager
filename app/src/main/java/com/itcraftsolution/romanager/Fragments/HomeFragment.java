@@ -2,10 +2,7 @@ package com.itcraftsolution.romanager.Fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,9 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
 import com.itcraftsolution.romanager.Adapters.HomeCustomerRecyclerAdapter;
 import com.itcraftsolution.romanager.Models.CustomerResponse;
+import com.itcraftsolution.romanager.Models.PlantDetailsModel;
+import com.itcraftsolution.romanager.Models.PlantResponse;
 import com.itcraftsolution.romanager.R;
+import com.itcraftsolution.romanager.Retrofit.RetrofitInstance;
 import com.itcraftsolution.romanager.ViewModels.RoManagerViewModel;
 import com.itcraftsolution.romanager.databinding.FragmentHomeBinding;
 
@@ -27,7 +30,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private RoManagerViewModel viewModel;
     private HomeCustomerRecyclerAdapter adapter;
-
+    private FirebaseAuth auth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,8 +38,22 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
 
+        auth = FirebaseAuth.getInstance();
         requireActivity().findViewById(R.id.bottomNavigationView).setVisibility(View.VISIBLE);
         viewModel = ViewModelProviders.of(HomeFragment.this).get(RoManagerViewModel.class);
+
+        viewModel.getAllPlantDetails(auth.getCurrentUser().getUid()).observe(getViewLifecycleOwner(), new Observer<PlantResponse>() {
+            @Override
+            public void onChanged(PlantResponse plantResponse) {
+                if(plantResponse != null){
+                    if(plantResponse.getPlantDetails() != null){
+                        PlantDetailsModel model = plantResponse.getPlantDetails();
+                        binding.txPlantName.setText(model.getPlant_name());
+                        Glide.with(requireContext()).load(RetrofitInstance.BASE_URL + model.getPlant_image()).into(binding.igPlantImage);
+                    }
+                }
+            }
+        });
 
         viewModel.getAllCustomers().observe(getViewLifecycleOwner(), new Observer<CustomerResponse>() {
             @Override
@@ -56,7 +73,7 @@ public class HomeFragment extends Fragment {
                         }
                     } else {
                         Toast.makeText(requireContext(), customerResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.d("Rv_Customer", "Home Rv : " +customerResponse.getMessage());
+                        Log.d("Rv_Customer", "Home Rv : " + customerResponse.getMessage());
                     }
                 }
             }

@@ -1,7 +1,6 @@
 package com.itcraftsolution.romanager.Repositories;
 
 import android.content.Context;
-import android.text.BoringLayout;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,6 +11,7 @@ import com.itcraftsolution.romanager.Models.CustomerModel;
 import com.itcraftsolution.romanager.Models.CustomerResponse;
 import com.itcraftsolution.romanager.Models.CustomerTransactionModel;
 import com.itcraftsolution.romanager.Models.PlantDetailsModel;
+import com.itcraftsolution.romanager.Models.PlantResponse;
 import com.itcraftsolution.romanager.Models.ResponseModel;
 import com.itcraftsolution.romanager.Retrofit.RetrofitInstance;
 
@@ -34,15 +34,15 @@ public class RoManagerRepository {
 
     public LiveData<Boolean> insertPlantDetails(PlantDetailsModel plantDetailsModel) {
         MutableLiveData<Boolean> mutableLiveData = new MutableLiveData<>();
-        RequestBody authIdBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getAuthId());
-        RequestBody plantNameBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlantName());
-        RequestBody plantPhoneBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlantPhone());
-        RequestBody plantEmailBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlantEmail());
-        RequestBody plantCityBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlantCity());
-        RequestBody plantAddressBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlantAddress());
-        RequestBody plantSecurityBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlantSecurity());
+        RequestBody authIdBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getAuth_id());
+        RequestBody plantNameBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlant_name());
+        RequestBody plantPhoneBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlant_phone());
+        RequestBody plantEmailBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlant_email());
+        RequestBody plantCityBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlant_city());
+        RequestBody plantAddressBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlant_address());
+        RequestBody plantSecurityBody = RequestBody.create(MediaType.parse("text/plain"), plantDetailsModel.getPlant_security());
 
-        File plantImageFile = new File(plantDetailsModel.getPlantImage());
+        File plantImageFile = new File(plantDetailsModel.getPlant_image());
         MultipartBody.Part plantImagePart = MultipartBody.Part.createFormData("plant_image", plantImageFile.getName(),
                 RequestBody.create(MediaType.parse("image/*"), plantImageFile));
 
@@ -60,6 +60,7 @@ public class RoManagerRepository {
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
                 mutableLiveData.setValue(false);
+                Log.d("insertPlantDetailsLog", t.getMessage());
             }
         });
         return mutableLiveData;
@@ -89,6 +90,30 @@ public class RoManagerRepository {
             }
         });
         return mutableLiveData;
+    }
+
+    public LiveData<PlantResponse> getAllPlantDetails(String auth_id) {
+        MutableLiveData<PlantResponse> liveData = new MutableLiveData<>();
+
+        RetrofitInstance.apiInterface().getAllPlantDetails(auth_id).enqueue(new Callback<PlantResponse>() {
+            @Override
+            public void onResponse(Call<PlantResponse> call, Response<PlantResponse> response) {
+                PlantResponse plantResponse = response.body();
+                if (plantResponse != null) {
+                    if (plantResponse.getStatus().equals("success")) {
+                        liveData.setValue(plantResponse);
+                    }else{
+                        Toast.makeText(context, plantResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PlantResponse> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        return liveData;
     }
 
     public LiveData<CustomerResponse> getAllCustomers() {

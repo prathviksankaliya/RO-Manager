@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.itcraftsolution.romanager.Models.PlantDetailsModel;
+import com.itcraftsolution.romanager.Models.PlantResponse;
 import com.itcraftsolution.romanager.Utils.FileUtils;
 import com.itcraftsolution.romanager.Utils.NetworkChangeListener;
 import com.itcraftsolution.romanager.ViewModels.RoManagerViewModel;
@@ -77,7 +78,7 @@ public class ProfileActivity extends AppCompatActivity {
                     String plantAddress = binding.edProfilePlantAddress.getText().toString().trim();
                     String plantPhone = binding.edProfilePhone.getText().toString().trim();
 
-                    PlantDetailsModel model = new PlantDetailsModel(0, auth.getCurrentUser().getUid(), plantName, plantPhone, "", imgPath, plantCityName, plantAddress, "", 1);
+                    PlantDetailsModel model = new PlantDetailsModel(25, 20, auth.getCurrentUser().getUid(), plantName, plantPhone, "", imgPath, plantCityName, plantAddress, "");
                     roManagerViewModel.insertPlantDetails(model).observe(ProfileActivity.this, new Observer<Boolean>() {
                         @Override
                         public void onChanged(Boolean aBoolean) {

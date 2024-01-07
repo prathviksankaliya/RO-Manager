@@ -1,12 +1,7 @@
 package com.itcraftsolution.romanager.Retrofit;
 
-import android.view.PixelCopy;
-
-import androidx.browser.customtabs.CustomTabsService;
-
-import com.itcraftsolution.romanager.Models.CustomerModel;
 import com.itcraftsolution.romanager.Models.CustomerResponse;
-import com.itcraftsolution.romanager.Models.CustomerTransactionModel;
+import com.itcraftsolution.romanager.Models.PlantResponse;
 import com.itcraftsolution.romanager.Models.ResponseModel;
 
 import okhttp3.MultipartBody;
@@ -41,5 +36,8 @@ public interface ApiInterface {
     Call<ResponseModel> addCustomerGivenTransaction(@Field("cust_id") int cust_id, @Field("debit") int debit,
                                                                @Field("jag") int jag, @Field("bottle") int bottle, @Field("note") String note, @Field("cust_tra_date") String cust_tra_date);
 
+    @FormUrlEncoded
+    @POST("get_plant_details.php")
+    Call<PlantResponse> getAllPlantDetails(@Field("auth_id") String auth_id);
 
 }
