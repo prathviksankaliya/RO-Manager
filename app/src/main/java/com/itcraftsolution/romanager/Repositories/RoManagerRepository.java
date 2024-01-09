@@ -68,11 +68,8 @@ public class RoManagerRepository {
 
     public LiveData<Boolean> addCustomerDetails(CustomerModel model) {
         MutableLiveData<Boolean> mutableLiveData = new MutableLiveData<>();
-        RequestBody cust_name = RequestBody.create(MediaType.parse("text/plain"), model.getCust_name());
-        RequestBody cust_phone = RequestBody.create(MediaType.parse("text/plain"), model.getCust_phone());
-        RequestBody cust_address = RequestBody.create(MediaType.parse("text/plain"), model.getCust_address());
 
-        RetrofitInstance.apiInterface().addCustomerDetails(cust_name, cust_phone, cust_address).enqueue(new Callback<ResponseModel>() {
+        RetrofitInstance.apiInterface().addCustomerDetails(String.valueOf(model.getPlant_id()), model.getCust_name(), model.getCust_phone(), model.getCust_address()).enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 ResponseModel responseModel = response.body();
@@ -143,19 +140,22 @@ public class RoManagerRepository {
 
     public LiveData<Boolean> addCustomerGivenTransaction(CustomerTransactionModel model){
         MutableLiveData<Boolean> liveData = new MutableLiveData<>();
-        RetrofitInstance.apiInterface().addCustomerGivenTransaction(model.getCust_id(), model.getDebit(), model.getJag(), model.getBottle(), model.getNote(), model.getCust_tra_date()).enqueue(new Callback<ResponseModel>() {
+        RetrofitInstance.apiInterface().addCustomerGivenTransaction(model.getCust_id(), model.getPlant_id(),model.getDebit(), model.getTotal(),model.getJag(), model.getBottle(), model.getNote(), model.getCust_tra_date()).enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 ResponseModel responseModel = response.body();
                 if (responseModel != null) {
+//                    Log.d("AddTransactionLogs", responseModel.getStatus() + " " + responseModel.getMessage());
                     liveData.setValue(true);
                 } else {
+//                    Log.d("AddTransactionLogs", "response Model null");
                     liveData.setValue(false);
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
+//                Log.d("AddTransactionLogs", t.getMessage());
                 liveData.setValue(false);
             }
         });

@@ -23,18 +23,19 @@ public interface ApiInterface {
                                            @Part MultipartBody.Part plant_image, @Part("plant_city") RequestBody plant_city,
                                            @Part("plant_address") RequestBody plant_address, @Part("plant_security") RequestBody plant_security);
 
-    @Multipart
+    @FormUrlEncoded
     @POST("add_customer.php")
-    Call<ResponseModel> addCustomerDetails(@Part("cust_name") RequestBody cust_name, @Part("cust_phone") RequestBody cust_phone,
-                                    @Part("cust_address") RequestBody cust_address);
+    Call<ResponseModel> addCustomerDetails(@Field("plant_id") String plant_id, @Field("cust_name") String cust_name, @Field("cust_phone") String cust_phone,
+                                    @Field("cust_address") String cust_address);
 
 
     @GET("get_customers.php")
     Call<CustomerResponse> getAllCustomers();
 
+    @FormUrlEncoded
     @POST("add_customer_given_transaction.php")
-    Call<ResponseModel> addCustomerGivenTransaction(@Field("cust_id") int cust_id, @Field("debit") int debit,
-                                                               @Field("jag") int jag, @Field("bottle") int bottle, @Field("note") String note, @Field("cust_tra_date") String cust_tra_date);
+    Call<ResponseModel> addCustomerGivenTransaction(@Field("cust_id") int cust_id, @Field("plant_id") int plant_id,@Field("debit") int debit,
+                                                               @Field("total") int total,@Field("jag") int jag, @Field("bottle") int bottle, @Field("note") String note, @Field("cust_tra_date") String cust_tra_date);
 
     @FormUrlEncoded
     @POST("get_plant_details.php")

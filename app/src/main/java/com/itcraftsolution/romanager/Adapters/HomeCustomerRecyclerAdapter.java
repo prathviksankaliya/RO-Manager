@@ -53,7 +53,10 @@ public class HomeCustomerRecyclerAdapter extends RecyclerView.Adapter<HomeCustom
                 context.startActivity(new Intent(context, CustomerTransactionActivity.class)
                         .putExtra("custName", model.getCust_name())
                         .putExtra("moneyStatus", model.getMoney_status())
-                        .putExtra("totalBalance", model.getTotal_balance()));
+                        .putExtra("totalBalance", model.getTotal_balance())
+                        .putExtra("plantId", model.getPlant_id())
+                        .putExtra("custId", model.getCust_id()));
+
             }
         });
     }

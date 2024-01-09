@@ -1,12 +1,13 @@
 package com.itcraftsolution.romanager.Models;
 
 public class CustomerTransactionModel {
-    private int cust_tra_id, cust_id, debit, credit, total, jag, bottle;
+    private int cust_tra_id, cust_id, plant_id,debit, credit, total, jag, bottle;
     private String note, cust_tra_date;
 
-    public CustomerTransactionModel(int cust_tra_id, int cust_id, int debit, int credit, int total, int jag, int bottle, String note, String cust_tra_date) {
+    public CustomerTransactionModel(int cust_tra_id, int cust_id, int plant_id,int debit, int credit, int total, int jag, int bottle, String note, String cust_tra_date) {
         this.cust_tra_id = cust_tra_id;
         this.cust_id = cust_id;
+        this.plant_id = plant_id;
         this.debit = debit;
         this.credit = credit;
         this.total = total;
@@ -19,9 +20,11 @@ public class CustomerTransactionModel {
     public CustomerTransactionModel() {
     }
 
-    public CustomerTransactionModel(int cust_id, int debit, int jag, int bottle, String note, String cust_tra_date) {
+    public CustomerTransactionModel(int cust_id, int plant_id,int debit, int total,int jag, int bottle, String note, String cust_tra_date) {
         this.cust_id = cust_id;
+        this.plant_id = plant_id;
         this.debit = debit;
+        this.total = total;
         this.jag = jag;
         this.bottle = bottle;
         this.note = note;
@@ -42,6 +45,14 @@ public class CustomerTransactionModel {
 
     public void setCust_id(int cust_id) {
         this.cust_id = cust_id;
+    }
+
+    public int getPlant_id() {
+        return plant_id;
+    }
+
+    public void setPlant_id(int plant_id) {
+        this.plant_id = plant_id;
     }
 
     public int getDebit() {

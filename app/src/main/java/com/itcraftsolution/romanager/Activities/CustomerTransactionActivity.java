@@ -13,7 +13,7 @@ public class CustomerTransactionActivity extends AppCompatActivity {
 
     private ActivityCustomerTransactionBinding binding;
     private String custName, moneyStatus;
-    private int totalBalance;
+    private int totalBalance, plantId, custId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,10 @@ public class CustomerTransactionActivity extends AppCompatActivity {
                 startActivity(new Intent(CustomerTransactionActivity.this, AddCustomerTransactionActivity.class)
                         .putExtra("custName", custName)
                         .putExtra("moneyStatus", moneyStatus)
-                        .putExtra("totalBalance", totalBalance));
+                        .putExtra("totalBalance", totalBalance)
+                        .putExtra("plantId", plantId)
+                        .putExtra("custId", custId));
+                finish();
             }
         });
     }
@@ -38,6 +41,8 @@ public class CustomerTransactionActivity extends AppCompatActivity {
         totalBalance = getIntent().getIntExtra("totalBalance", 0);
         moneyStatus = getIntent().getStringExtra("moneyStatus");
         custName = getIntent().getStringExtra("custName");
+        plantId = getIntent().getIntExtra("plantId", 0);
+        custId = getIntent().getIntExtra("custId", 0);
 
         binding.txCustomerName.setText(custName);
         binding.txCustTransactionMoneyStatus.setText(String.valueOf(moneyStatus + " Balance"));

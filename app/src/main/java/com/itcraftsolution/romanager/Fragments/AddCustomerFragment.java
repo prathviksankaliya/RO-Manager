@@ -37,9 +37,7 @@ public class AddCustomerFragment extends Fragment {
 
     private FragmentAddCustomerBinding binding;
     private RoManagerViewModel viewModel;
-//    private ActivityResultLauncher<Intent> launcher;
-//    private Uri selectedImageUri;
-//    private String imgPath = "";
+    private int plant_id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +47,10 @@ public class AddCustomerFragment extends Fragment {
 
         requireActivity().findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         viewModel = ViewModelProviders.of(AddCustomerFragment.this).get(RoManagerViewModel.class);
+
+        if (getArguments() != null && getArguments().getInt("plant_id", 0) != 0) {
+            plant_id = getArguments().getInt("plant_id", 0);
+        }
 
         binding.edCustomerName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -73,27 +75,27 @@ public class AddCustomerFragment extends Fragment {
         binding.btnAddCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(binding.edCustomerName.getText().toString().isEmpty() || binding.edCustomerName.getText().length() <= 2){
+                if (binding.edCustomerName.getText().toString().isEmpty() || binding.edCustomerName.getText().length() <= 2) {
                     binding.edCustomerName.setError("Please enter valid name!!");
                     binding.edCustomerName.requestFocus();
-                }else if(!binding.edCustomerPhone.getText().toString().isEmpty() && binding.edCustomerPhone.getText().length() != 10){
+                } else if (!binding.edCustomerPhone.getText().toString().isEmpty() && binding.edCustomerPhone.getText().length() != 10) {
                     binding.edCustomerPhone.setError("Please enter valid Phone Number!!");
                     binding.edCustomerPhone.requestFocus();
-                }else if(binding.edCustomerAddress.getText().toString().isEmpty() || binding.edCustomerAddress.getText().length() <= 5){
+                } else if (binding.edCustomerAddress.getText().toString().isEmpty() || binding.edCustomerAddress.getText().length() <= 5) {
                     binding.edCustomerAddress.setError("Please enter valid Address!!");
                     binding.edCustomerAddress.requestFocus();
-                }else{
+                } else {
                     String cust_name = binding.edCustomerName.getText().toString();
                     String cust_phone = binding.edCustomerPhone.getText().toString();
                     String cust_address = binding.edCustomerAddress.getText().toString();
-                    CustomerModel model = new CustomerModel(cust_name, cust_phone, cust_address);
+                    CustomerModel model = new CustomerModel(plant_id, cust_name, cust_phone, cust_address);
                     viewModel.addCustomerDetails(model).observe(getViewLifecycleOwner(), new Observer<Boolean>() {
                         @Override
                         public void onChanged(Boolean aBoolean) {
-                            if(aBoolean){
+                            if (aBoolean) {
                                 Toast.makeText(requireContext(), "Add Customer Details Successfully...", Toast.LENGTH_SHORT).show();
                                 getParentFragmentManager().beginTransaction().replace(R.id.frDashboardContainer, new HomeFragment()).commit();
-                            }else{
+                            } else {
                                 Toast.makeText(requireContext(), "FAC Something went Wrong!!", Toast.LENGTH_SHORT).show();
                             }
                         }

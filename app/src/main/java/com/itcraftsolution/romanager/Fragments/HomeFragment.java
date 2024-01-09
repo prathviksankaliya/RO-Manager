@@ -31,6 +31,7 @@ public class HomeFragment extends Fragment {
     private RoManagerViewModel viewModel;
     private HomeCustomerRecyclerAdapter adapter;
     private FirebaseAuth auth;
+    private Bundle bundle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +50,8 @@ public class HomeFragment extends Fragment {
                     if(plantResponse.getPlantDetails() != null){
                         PlantDetailsModel model = plantResponse.getPlantDetails();
                         binding.txPlantName.setText(model.getPlant_name());
+                        bundle = new Bundle();
+                        bundle.putInt("plant_id", model.getPlant_id());
                         Glide.with(requireContext()).load(RetrofitInstance.BASE_URL + model.getPlant_image()).into(binding.igPlantImage);
                     }
                 }
@@ -82,7 +85,10 @@ public class HomeFragment extends Fragment {
         binding.fabAddCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getParentFragmentManager().beginTransaction().replace(R.id.frDashboardContainer, new AddCustomerFragment()).addToBackStack(null).commit();
+                Fragment addCustomerFragment = new AddCustomerFragment();
+                addCustomerFragment.setArguments(bundle);
+                getParentFragmentManager().beginTransaction().replace(R.id.frDashboardContainer, addCustomerFragment).addToBackStack(null).commit();
+
             }
         });
         return binding.getRoot();

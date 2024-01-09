@@ -1,11 +1,12 @@
 package com.itcraftsolution.romanager.Models;
 
 public class CustomerModel {
-    private int cust_id, cust_status, total_balance;
+    private int cust_id, plant_id,cust_status, total_balance;
     private String cust_name, cust_phone, cust_address, cust_date, money_status,cust_msg;
 
-    public CustomerModel(int cust_id, int cust_status, int total_balance, String cust_name, String cust_phone, String cust_address, String cust_date, String money_status, String cust_msg) {
+    public CustomerModel(int cust_id, int plant_id,int cust_status, int total_balance, String cust_name, String cust_phone, String cust_address, String cust_date, String money_status, String cust_msg) {
         this.cust_id = cust_id;
+        this.plant_id = plant_id;
         this.cust_status = cust_status;
         this.total_balance = total_balance;
         this.cust_name = cust_name;
@@ -16,13 +17,22 @@ public class CustomerModel {
         this.cust_msg = cust_msg;
     }
 
-    public CustomerModel(String cust_name, String cust_phone, String cust_address) {
+    public CustomerModel(int plant_id, String cust_name, String cust_phone, String cust_address) {
         this.cust_name = cust_name;
+        this.plant_id = plant_id;
         this.cust_phone = cust_phone;
         this.cust_address = cust_address;
     }
 
     public CustomerModel() {
+    }
+
+    public int getPlant_id() {
+        return plant_id;
+    }
+
+    public void setPlant_id(int plant_id) {
+        this.plant_id = plant_id;
     }
 
     public int getCust_id() {

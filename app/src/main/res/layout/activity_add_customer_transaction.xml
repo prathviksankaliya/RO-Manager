@@ -166,7 +166,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edAddTransactionNotes"
+        android:id="@+id/addTransactionNotes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Add Note (Optional)"
@@ -186,7 +186,7 @@
         app:startIconDrawable="@drawable/add_notes_24px">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edProfilePlantName"
+            android:id="@+id/edAddTransactionNotes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito_semibold"
@@ -204,7 +204,7 @@
         android:padding="@dimen/_6mdp"
         android:fontFamily="@font/nunito_bold"
         android:text="Add Transaction"
-        app:layout_constraintEnd_toEndOf="@+id/edAddTransactionNotes"
-        app:layout_constraintStart_toStartOf="@+id/edAddTransactionNotes"
-        app:layout_constraintTop_toBottomOf="@+id/edAddTransactionNotes" />
+        app:layout_constraintEnd_toEndOf="@+id/addTransactionNotes"
+        app:layout_constraintStart_toStartOf="@+id/addTransactionNotes"
+        app:layout_constraintTop_toBottomOf="@+id/addTransactionNotes" />
 </androidx.constraintlayout.widget.ConstraintLayout>
