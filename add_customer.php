@@ -7,11 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $cust_name = mysqli_real_escape_string($con, $_POST['cust_name']);
     $cust_phone = mysqli_real_escape_string($con, $_POST['cust_phone']);
     $cust_address = mysqli_real_escape_string($con, $_POST['cust_address']);
+    $plant_id = mysqli_real_escape_string($con, $_POST['plant_id']);
 
     if (empty($cust_name)) {
         $output = array('status' => 'error', 'message' => 'Please Enter Customer name!!');
     } else if (empty($cust_address)) {
         $output = array('status' => 'error', 'message' => 'Please Enter Valid address!!');
+    }else if ((int)$plant_id <= 0) {
+        $output = array('status' => 'error', 'message' => 'Please Enter Valid Plant id!!');
     } else {
         if (empty($cust_phone)) {
             $cust_phone = null;
@@ -22,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         date_default_timezone_set("Asia/Kolkata");
         $date_time = date("Y-m-d");
-        $formattedDate = date("j M, Y", strtotime($date_time));
-        
+        $formattedDate = date("d M, Y", strtotime($date_time));
+
         $cust_msg = "Added on " . $formattedDate;
 
         // if ($_FILES["cust_image"]["tmp_name"] != null) {
@@ -35,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // } else {
         //     $imagePath = null;
         // }
-        $sql = "insert into customer_details (cust_name, cust_phone, cust_address, cust_date, cust_msg)
-             values ('$cust_name', '$cust_phone', '$cust_address', '$formattedDate', '$cust_msg')";
+        $sql = "insert into customer_details (plant_id, cust_name, cust_phone, cust_address, cust_date, cust_msg)
+             values ($plant_id, '$cust_name', '$cust_phone', '$cust_address', '$formattedDate', '$cust_msg')";
         if (mysqli_query($con, $sql)) {
             $output = array('status' => 'success', 'message' => 'Add Customer Details Successfully...');
         } else {
