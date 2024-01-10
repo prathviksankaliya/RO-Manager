@@ -1,7 +1,7 @@
 package com.itcraftsolution.romanager.Models;
 
 public class CustomerTransactionModel {
-    private int cust_tra_id, cust_id, plant_id,debit, credit, total, jag, bottle;
+    private int cust_tra_id, cust_id, plant_id, debit, credit, total, jag, bottle;
     private String note, cust_tra_date;
 
     public CustomerTransactionModel(int cust_tra_id, int cust_id, int plant_id,int debit, int credit, int total, int jag, int bottle, String note, String cust_tra_date) {

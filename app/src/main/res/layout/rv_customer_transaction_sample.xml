@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/transparent"
+    android:background="@drawable/white_bg"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/_6mdp"
-        android:background="@color/transparent"
+        android:background="@drawable/white_bg"
         >
 
         <TextView
@@ -29,7 +29,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutReceivedTransaction"
+            android:id="@+id/layoutGivenTransaction"
             android:layout_width="@dimen/_150mdp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_4mdp"
@@ -61,23 +61,64 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txTransactionGivenDesc"
-                android:layout_width="match_parent"
+                android:id="@+id/txNumOfJags2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_3mdp"
                 android:fontFamily="@font/nunito_semibold"
-                android:maxLines="2"
-                android:text="Botal Num: 20Botal Num: Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 2020Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20vvvv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/imageView6"
+                android:maxLines="1"
+                android:text="Number of Jags: "
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txTransactionGivenPrice" />
 
             <TextView
-                android:id="@+id/txTransactionGivenDate"
+                android:id="@+id/txJagGivenCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4mdp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="20"
+                android:textSize="@dimen/_12font_mdp"
+                app:layout_constraintBottom_toBottomOf="@+id/txNumOfJags2"
+                app:layout_constraintStart_toEndOf="@+id/txNumOfJags2"
+                app:layout_constraintTop_toBottomOf="@+id/txTransactionGivenPrice" />
+
+            <TextView
+                android:id="@+id/txNumOfBottles2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:maxLines="1"
+                android:text="Number of Bottles: "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txNumOfJags2" />
+
+            <TextView
+                android:id="@+id/txBottleGivenCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:text="20"
+                android:textSize="@dimen/_12font_mdp"
+                app:layout_constraintBottom_toBottomOf="@+id/txNumOfBottles2"
+                app:layout_constraintStart_toEndOf="@+id/txNumOfBottles2"
+                app:layout_constraintTop_toTopOf="@+id/txNumOfBottles2" />
+
+            <TextView
+                android:id="@+id/txTransactionGivenDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3mdp"
+                android:fontFamily="@font/nunito_regular"
+                android:maxLines="1"
+                android:text="this is for just a test note ok ho ne aa khali note j chhe"
+                app:layout_constraintStart_toStartOf="@+id/imageView6"
+                app:layout_constraintTop_toBottomOf="@+id/txNumOfBottles2" />
+
+            <TextView
+                android:id="@+id/txTransactionGivenTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_3mdp"
+                android:layout_marginTop="@dimen/_4mdp"
                 android:fontFamily="@font/nunito_semibold"
                 android:text="08:10 AM"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -86,18 +127,18 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/txTransactionGivenLeftBalance"
+            android:id="@+id/txTransactionReceivedLeftBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3mdp"
             android:fontFamily="@font/nunito_semibold"
             android:text="₹ 300 Due"
-            android:layout_marginTop="@dimen/_3mdp"
             android:textSize="@dimen/_13font_mdp"
-            app:layout_constraintEnd_toEndOf="@+id/layoutReceivedTransaction"
+            app:layout_constraintStart_toStartOf="@+id/layoutReceivedTransaction"
             app:layout_constraintTop_toBottomOf="@+id/layoutReceivedTransaction" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutGivenTransaction"
+            android:id="@+id/layoutReceivedTransaction"
             android:layout_width="@dimen/_150mdp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_4mdp"
@@ -129,16 +170,58 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/txNumOfJags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:maxLines="1"
+                android:text="Number of Jags: "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txTransactionReceivedPrice" />
+
+            <TextView
+                android:id="@+id/txJagCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:text="20"
+                android:textSize="@dimen/_12font_mdp"
+                app:layout_constraintBottom_toBottomOf="@+id/txNumOfJags"
+                app:layout_constraintStart_toEndOf="@+id/txNumOfJags"
+                app:layout_constraintTop_toBottomOf="@+id/txTransactionReceivedPrice" />
+
+            <TextView
+                android:id="@+id/txNumOfBottles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:maxLines="1"
+                android:text="Number of Bottles: "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txNumOfJags" />
+
+            <TextView
+                android:id="@+id/txBottleCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:text="20"
+                android:textSize="@dimen/_12font_mdp"
+                app:layout_constraintBottom_toBottomOf="@+id/txNumOfBottles"
+                app:layout_constraintStart_toEndOf="@+id/txNumOfBottles"
+                app:layout_constraintTop_toTopOf="@+id/txNumOfBottles" />
+
+            <TextView
                 android:id="@+id/txTransactionReceivedDesc"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_3mdp"
-                android:fontFamily="@font/nunito_semibold"
-                android:maxLines="2"
-                android:text="Botal Num: 20Botal Num: Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 2020Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20Botal Num: 20vvvv"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:fontFamily="@font/nunito_regular"
+                android:maxLines="1"
+                android:text="this is for just a test note ok ho ne aa khali note j chhe"
+                app:layout_constraintEnd_toEndOf="@+id/txNumOfBottles"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"
-                app:layout_constraintTop_toBottomOf="@+id/txTransactionReceivedPrice" />
+                app:layout_constraintTop_toBottomOf="@+id/txNumOfBottles" />
 
             <TextView
                 android:id="@+id/txTransactionReceivedDate"
@@ -154,14 +237,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/txTransactionReceivedLeftBalance"
+            android:id="@+id/txTransactionGivenLeftBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3mdp"
             android:fontFamily="@font/nunito_semibold"
             android:text="₹ 300 Due"
             android:textSize="@dimen/_13font_mdp"
-            android:layout_marginTop="@dimen/_3mdp"
-            app:layout_constraintStart_toStartOf="@+id/layoutGivenTransaction"
+            app:layout_constraintEnd_toEndOf="@+id/layoutGivenTransaction"
             app:layout_constraintTop_toBottomOf="@+id/layoutGivenTransaction" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

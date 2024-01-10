@@ -66,11 +66,17 @@ public class AddCustomerTransactionActivity extends AppCompatActivity {
                     int debit = (jag * jagPrice) + (bottlePrice * bottle);
                     Toast.makeText(AddCustomerTransactionActivity.this, ""+debit, Toast.LENGTH_SHORT).show();
                     CustomerTransactionModel model = new CustomerTransactionModel(custId, plantId, debit, totalBalance, jag, bottle, note, formattedDateTime);
+                    totalBalance = totalBalance - debit;
                     viewModel.addCustomerGivenTransaction(model).observe(AddCustomerTransactionActivity.this, new Observer<Boolean>() {
                         @Override
                         public void onChanged(Boolean aBoolean) {
                             if(aBoolean){
-                                startActivity(new Intent(AddCustomerTransactionActivity.this, CustomerTransactionActivity.class));
+                                startActivity(new Intent(AddCustomerTransactionActivity.this, CustomerTransactionActivity.class)
+                                        .putExtra("custName", custName)
+                                        .putExtra("moneyStatus", moneyStatus)
+                                        .putExtra("totalBalance", totalBalance)
+                                        .putExtra("plantId", plantId)
+                                        .putExtra("custId", custId));
                                 finish();
                             }else{
                                 Toast.makeText(AddCustomerTransactionActivity.this, "ACT Something went Wrong!!", Toast.LENGTH_SHORT).show();

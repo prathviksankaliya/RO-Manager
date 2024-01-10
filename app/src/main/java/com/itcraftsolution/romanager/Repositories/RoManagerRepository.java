@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.itcraftsolution.romanager.Models.CustomerModel;
 import com.itcraftsolution.romanager.Models.CustomerResponse;
 import com.itcraftsolution.romanager.Models.CustomerTransactionModel;
+import com.itcraftsolution.romanager.Models.CustomerTransactionResponse;
 import com.itcraftsolution.romanager.Models.PlantDetailsModel;
 import com.itcraftsolution.romanager.Models.PlantResponse;
 import com.itcraftsolution.romanager.Models.ResponseModel;
@@ -161,4 +162,29 @@ public class RoManagerRepository {
         });
         return liveData;
      }
+
+     public LiveData<CustomerTransactionResponse> getCustomerTransactionDetails(int cust_id, int plant_id){
+        MutableLiveData<CustomerTransactionResponse> liveData = new MutableLiveData<>();
+        RetrofitInstance.apiInterface().getCustomerTransactionDetails(cust_id, plant_id).enqueue(new Callback<CustomerTransactionResponse>() {
+            @Override
+            public void onResponse(Call<CustomerTransactionResponse> call, Response<CustomerTransactionResponse> response) {
+                CustomerTransactionResponse customerResponse = response.body();
+                if (customerResponse != null) {
+                    if (customerResponse.getStatus().equals("success")) {
+                        liveData.setValue(customerResponse);
+                    }else{
+                        Toast.makeText(context, customerResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CustomerTransactionResponse> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return liveData;
+     }
+
 }

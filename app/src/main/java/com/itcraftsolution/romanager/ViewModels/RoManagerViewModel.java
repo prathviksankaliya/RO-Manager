@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import com.itcraftsolution.romanager.Models.CustomerModel;
 import com.itcraftsolution.romanager.Models.CustomerResponse;
 import com.itcraftsolution.romanager.Models.CustomerTransactionModel;
+import com.itcraftsolution.romanager.Models.CustomerTransactionResponse;
 import com.itcraftsolution.romanager.Models.PlantDetailsModel;
 import com.itcraftsolution.romanager.Models.PlantResponse;
 import com.itcraftsolution.romanager.Repositories.RoManagerRepository;
@@ -39,5 +40,9 @@ public class RoManagerViewModel extends AndroidViewModel {
 
     public LiveData<PlantResponse> getAllPlantDetails(String auth_id){
         return repository.getAllPlantDetails(auth_id);
+    }
+
+    public LiveData<CustomerTransactionResponse> getCustomerTransactionDetails(int cust_id, int plant_id){
+        return repository.getCustomerTransactionDetails(cust_id, plant_id);
     }
 }

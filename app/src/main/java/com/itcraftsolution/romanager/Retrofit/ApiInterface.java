@@ -1,6 +1,7 @@
 package com.itcraftsolution.romanager.Retrofit;
 
 import com.itcraftsolution.romanager.Models.CustomerResponse;
+import com.itcraftsolution.romanager.Models.CustomerTransactionResponse;
 import com.itcraftsolution.romanager.Models.PlantResponse;
 import com.itcraftsolution.romanager.Models.ResponseModel;
 
@@ -40,5 +41,9 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("get_plant_details.php")
     Call<PlantResponse> getAllPlantDetails(@Field("auth_id") String auth_id);
+
+    @FormUrlEncoded
+    @POST("get_customer_transaction.php")
+    Call<CustomerTransactionResponse> getCustomerTransactionDetails(@Field("cust_id") int cust_id, @Field("plant_id") int plant_id);
 
 }
