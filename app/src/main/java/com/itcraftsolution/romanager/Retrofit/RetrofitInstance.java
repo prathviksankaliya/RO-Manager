@@ -7,7 +7,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
-    public static final String BASE_URL = "http://192.168.0.108/romanager_api/";
+    public static final String BASE_URL = "http://192.168.1.4/romanager_api/";
 
     public static Retrofit retrofit = null;
 

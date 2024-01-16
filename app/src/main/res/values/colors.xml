@@ -9,6 +9,7 @@
     <color name="statusBarDarkBlue">#4F43A8</color>
     <color name="boarderColor">#868C8C8C</color>
     <color name="green">#388E3C</color>
+    <color name="grey">#B5000000</color>
 
     <color name="brown">#EFEBE9</color>
     <color name="orange">#FBE9E7</color>
